@@ -1,5 +1,6 @@
-import { MantineProvider } from "@mantine/core";
 import type { ReactNode } from "react";
+import { MantineProvider } from "@mantine/core";
+import AppLayout from "../Layout/AppLayout";
 
 function AppWrapper({children}: { children: ReactNode }) {
   return (
@@ -11,7 +12,9 @@ function AppWrapper({children}: { children: ReactNode }) {
         colorScheme: 'dark',
       }}
     >
-      {children}
+      <AppLayout>
+        {children}
+      </AppLayout>
     </MantineProvider>
   );
 }
