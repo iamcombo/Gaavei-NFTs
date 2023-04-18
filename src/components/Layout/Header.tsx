@@ -1,8 +1,11 @@
-import { Avatar, Col, Container, Divider, Grid, Group, Header, Text, Title } from '@mantine/core';
+import { Avatar, Col, Container, Divider, Drawer, Grid, Group, Header, Text, Title } from '@mantine/core';
 import { IconSearch } from '@tabler/icons-react';
 import DropdownMenu from './DropdownMenu';
+import { useState } from 'react';
 
 function HeaderComponent() {
+  const [opened, setOpened] = useState(false);
+
   return (
     <Header height={60}>
       <Container size={1280}>
@@ -13,7 +16,7 @@ function HeaderComponent() {
               <Text weight={500}>Discover</Text>
               <Text weight={500}>Portfolio</Text>
               <Divider orientation='vertical' />
-              <IconSearch size={24} />
+              <IconSearch size={24} onClick={() => setOpened(true)} />
             </Group>
           </Col>
           <Col span={12}>
@@ -29,6 +32,17 @@ function HeaderComponent() {
           </Col>
         </Grid>
       </Container>
+
+      <Drawer
+        opened={opened}
+        onClose={() => setOpened(false)}
+        position='bottom'
+        size="90%"
+        transitionProps={{ duration: 150, timingFunction: 'linear' }}
+        withCloseButton={false}
+      >
+        {/* Drawer content */}
+      </Drawer>
     </Header>
   );
 }

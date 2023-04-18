@@ -7,7 +7,7 @@ function NewReleaseCard() {
         <Group>
           <Image alt='' src='https://royal-io.imgix.net/5e3c7687-0f82-4a9a-84f6-60d05dfdcc1a.jpg?auto=format&ar=1%3A1&fit=crop&dpr=1&w=120&h=120&q=75' width={60} height={60} radius='sm' />
           <div>
-            <Text>EXCITED</Text>
+            <Text weight={500}>EXCITED</Text>
             <Text>PRETTYMUCH</Text>
             <Text color="dimmed">Gold</Text>
           </div>

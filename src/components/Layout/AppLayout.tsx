@@ -6,6 +6,8 @@ function AppLayout({ children }: { children: ReactNode }) {
   return (
     <AppShell
       header={<HeaderComponent />}
+      padding={0}
+
     >
       {children}
     </AppShell>

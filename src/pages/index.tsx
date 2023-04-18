@@ -2,10 +2,11 @@ import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import Image from 'next/image'
 import album from '@/assets/album.jpg'
-import { Col, Container, Grid, Overlay, Paper, Title } from '@mantine/core'
+import { Button, Center, Col, Container, Grid, Overlay, Paper, Space, Title } from '@mantine/core'
 import { url } from 'inspector'
 import TrendingCard from '@/components/Card/TrendingCard'
 import NewReleaseCard from '@/components/Card/NewReleaseCard'
+import { IconArrowRight } from '@tabler/icons-react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,8 +28,8 @@ export default function Home() {
           />
           <Image src={album} alt='' fill style={{ objectFit: 'cover' }} />
         </Paper>
-        <Container size={720} py={32}>
-          <Title order={4} weight={600} mb={8}>Trending</Title>
+        <Container size={820} py={32}>
+          <Title order={4} weight={600} mb={16}>Trending</Title>
           <Grid columns={24} gutter={32}>
             <Col span={12}>
               <TrendingCard />
@@ -38,7 +39,9 @@ export default function Home() {
             </Col>
           </Grid>
 
-          <Title order={4} weight={600} mt={24} mb={8}>New Release</Title>
+          <Space h={40} />
+
+          <Title order={4} weight={600} mb={16}>New Release</Title>
           <Grid columns={24} gutter={32}>
             <Col span={12}>
               <NewReleaseCard />
@@ -46,7 +49,16 @@ export default function Home() {
             <Col span={12}>
               <NewReleaseCard />
             </Col>
+            <Col span={12}>
+              <NewReleaseCard />
+            </Col>
+            <Col span={12}>
+              <NewReleaseCard />
+            </Col>
           </Grid>
+          <Center my={16}>
+            <Button compact variant='subtle' rightIcon={<IconArrowRight size={16} />}>View all</Button>
+          </Center>
         </Container>
       </main>
     </>
