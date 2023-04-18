@@ -23,6 +23,7 @@ export default function Home() {
           <Overlay
             gradient="linear-gradient(145deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 100%)"
             opacity={0.85}
+            zIndex={1}
           />
           <Image src={album} alt='' fill style={{ objectFit: 'cover' }} />
         </Paper>
