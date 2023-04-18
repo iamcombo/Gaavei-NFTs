@@ -1,13 +1,11 @@
-import {
-  AppShell, Header, Navbar
-} from '@mantine/core';
+import { AppShell } from '@mantine/core';
 import type { ReactNode } from 'react';
+import HeaderComponent from './Header';
 
 function AppLayout({ children }: { children: ReactNode }) {
   return (
     <AppShell
-      navbar={<Navbar width={{ base: 300 }}>{/*  */}</Navbar>}
-      header={<Header height={60}>{/* */}</Header>}
+      header={<HeaderComponent />}
     >
       {children}
     </AppShell>

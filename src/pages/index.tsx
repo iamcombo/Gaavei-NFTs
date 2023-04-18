@@ -1,5 +1,11 @@
 import Head from 'next/head'
 import { Inter } from 'next/font/google'
+import Image from 'next/image'
+import album from '@/assets/album.jpg'
+import { Col, Container, Grid, Overlay, Paper, Title } from '@mantine/core'
+import { url } from 'inspector'
+import TrendingCard from '@/components/Card/TrendingCard'
+import NewReleaseCard from '@/components/Card/NewReleaseCard'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,7 +19,34 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        
+        <Paper h={240} sx={{ position: 'relative' }}>
+          <Overlay
+            gradient="linear-gradient(145deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 100%)"
+            opacity={0.85}
+          />
+          <Image src={album} alt='' fill style={{ objectFit: 'cover' }} />
+        </Paper>
+        <Container size={720} py={32}>
+          <Title order={4} weight={600} mb={8}>Trending</Title>
+          <Grid columns={24} gutter={32}>
+            <Col span={12}>
+              <TrendingCard />
+            </Col>
+            <Col span={12}>
+              <TrendingCard />
+            </Col>
+          </Grid>
+
+          <Title order={4} weight={600} mt={24} mb={8}>New Release</Title>
+          <Grid columns={24} gutter={32}>
+            <Col span={12}>
+              <NewReleaseCard />
+            </Col>
+            <Col span={12}>
+              <NewReleaseCard />
+            </Col>
+          </Grid>
+        </Container>
       </main>
     </>
   )
