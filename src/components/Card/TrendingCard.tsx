@@ -18,12 +18,12 @@ function TrendingCard() {
         </Badge>
       </Group>
 
-      <Text size="sm" color="dimmed">
+      <Text size="sm" color="dimmed" lineClamp={2}>
         With Fjord Tours you can explore more of the magical fjord landscapes with tours and
         activities on and around the fjords of Norway
       </Text>
 
-      <Button variant="outline" color="gray" fullWidth mt="md" radius="md">
+      <Button variant="outline" color="slate.8" fullWidth mt="md" radius="md">
         BUY
       </Button>
     </Card>
