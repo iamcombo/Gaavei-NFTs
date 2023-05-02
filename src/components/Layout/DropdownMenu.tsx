@@ -1,9 +1,9 @@
-import { ActionIcon, Menu, Text } from "@mantine/core";
+import { ActionIcon, Avatar, Divider, Group, Menu, Stack, Text, Title } from "@mantine/core";
 import { IconArrowsLeftRight, IconCaretDown, IconMessageCircle, IconPhoto, IconSearch, IconSettings, IconTrash } from "@tabler/icons-react";
 
 function DropdownMenu() {
   return (
-    <Menu shadow="md" width={200}>
+    <Menu shadow="md" width={200} radius={16}>
       <Menu.Target>
         <ActionIcon color="dark">
           <IconCaretDown />
@@ -11,22 +11,26 @@ function DropdownMenu() {
       </Menu.Target>
 
       <Menu.Dropdown>
-        <Menu.Label>Application</Menu.Label>
-        <Menu.Item icon={<IconSettings size={14} />}>Settings</Menu.Item>
-        <Menu.Item icon={<IconMessageCircle size={14} />}>Messages</Menu.Item>
-        <Menu.Item icon={<IconPhoto size={14} />}>Gallery</Menu.Item>
-        <Menu.Item
-          icon={<IconSearch size={14} />}
-          rightSection={<Text size="xs" color="dimmed">⌘K</Text>}
-        >
-          Search
+        <Menu.Item>
+          <Group spacing={4}>
+            <Avatar radius='xl' />
+            <Stack spacing={4}>
+              <Text weight={600}>usename</Text>
+              <Text c='dimmed'>wallet address</Text>
+            </Stack>
+          </Group>
         </Menu.Item>
-
-        <Menu.Divider />
-
-        <Menu.Label>Danger zone</Menu.Label>
-        <Menu.Item icon={<IconArrowsLeftRight size={14} />}>Transfer my data</Menu.Item>
-        <Menu.Item color="red" icon={<IconTrash size={14} />}>Delete my account</Menu.Item>
+        <Divider my={8} />
+        <Stack spacing={4} px={8}>
+          <Title order={4}>0 ETH</Title>
+          <Text c='dimmed'>Wallet balance</Text>
+        </Stack>
+        <Divider my={8} />
+        <Menu.Item icon={<IconMessageCircle size={14} />}>Profile</Menu.Item>
+        <Menu.Item icon={<IconPhoto size={14} />}>Earning</Menu.Item>
+        <Menu.Item icon={<IconPhoto size={14} />}>Setting</Menu.Item>
+        <Menu.Item icon={<IconPhoto size={14} />}>Market</Menu.Item>
+        <Menu.Item icon={<IconPhoto size={14} />}>Logout</Menu.Item>
       </Menu.Dropdown>
     </Menu>
   );

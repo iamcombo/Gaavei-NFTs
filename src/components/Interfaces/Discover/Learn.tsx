@@ -7,11 +7,11 @@ function Learn() {
   return (
     <div>
       <Title order={4} weight={600} mb={16}>Learn</Title>
-      <StyledTabs defaultValue="education">
+      <StyledTabs defaultValue="news">
         <Tabs.List>
-          <Tabs.Tab value="education">
+          {/* <Tabs.Tab value="education">
             EDUCATION
-          </Tabs.Tab>
+          </Tabs.Tab> */}
           <Tabs.Tab value="news">
             NEWS
           </Tabs.Tab>

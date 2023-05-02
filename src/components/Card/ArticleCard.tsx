@@ -4,7 +4,7 @@ import React from 'react';
 function ArticleCard() {
   return (
     <Card withBorder>
-      <Card.Section pb={8}>
+      <Card.Section pb={8} h={280}>
         <Image alt="" src='https://images.us-east-1.aws.slicknode.com/c7bc4ed68f238e33e578e8bd0d0080ffc27458af/554x554/palace-ui-royal-io/de6698f0-a80b-4320-ad00-cabdfbe491b7/ce941bda-8aa8-4caf-b66e-a56898682124.png' />
       </Card.Section>
       <Title order={4}>Music as an asset class</Title>

@@ -1,5 +1,5 @@
-import { Avatar, Badge, Button, Center, Col, Grid, Stack, Text, Title } from "@mantine/core";
 import { IconArrowRight } from "@tabler/icons-react";
+import { Avatar, Button, Center, Col, Grid, Stack, Text, Title } from "@mantine/core";
 
 function TopCollectors() {
   return (
@@ -17,9 +17,7 @@ function TopCollectors() {
         </Col>
         <Col md={4}>
           <Stack justify='center' align='center' spacing='xs'>
-            <Avatar src='https://royal-io.imgix.net/3a153bb6-ecf2-4827-994d-0cfdb02343ab.png' radius='xl' size='xl'>
-              <Badge>#1</Badge>
-            </Avatar>
+            <Avatar src='https://royal-io.imgix.net/3a153bb6-ecf2-4827-994d-0cfdb02343ab.png' radius='xl' size='xl' />
             <div>
               <Text weight={500}>Craig</Text>
               <Text weight='lighter' size='xs'>@C7D</Text>

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { Container, Space } from '@mantine/core'
-import { HeroSection, Learn, NewRelease, TopCollectors, Trending } from '@/components/Pages/Discover'
+import { HeroSection, Learn, NewRelease, TopCollectors, Trending } from '@/components/Interfaces/Discover'
 
 export default function Home() {
   return (
