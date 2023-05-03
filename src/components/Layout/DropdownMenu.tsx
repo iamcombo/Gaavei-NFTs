@@ -18,20 +18,22 @@ function DropdownMenu() {
     >
       <Menu.Target>
         <ActionIcon color="dark">
-          <IconCaretDown />
+          <IconCaretDown stroke={1.5} />
         </ActionIcon>
       </Menu.Target>
 
       <Menu.Dropdown>
-        <Menu.Item>
-          <Group spacing={10}>
-            <Avatar radius='xl' src={user?.picture} />
-            <Stack spacing={4}>
-              <Text weight={600} truncate>{user?.name}</Text>
-              <Text c='dimmed' truncate>{shortenAddress(address) || ''}</Text>
-            </Stack>
-          </Group>
-        </Menu.Item>
+        <Link href='/profile'>
+          <Menu.Item>
+            <Group spacing={10}>
+              <Avatar radius='xl' src={user?.picture} />
+              <Stack spacing={4}>
+                <Text weight={600} truncate>{user?.name}</Text>
+                <Text c='dimmed' truncate>{shortenAddress(address) || ''}</Text>
+              </Stack>
+            </Group>
+          </Menu.Item>
+        </Link>
         <Divider my={8} />
         <Stack spacing={4} px={10}>
           <Title order={6}>0 ETH</Title>

@@ -1,5 +1,6 @@
 import { useAuth } from '@/contexts/authContext';
 import {
+  ActionIcon,
   Avatar,
   Button,
   Col,
@@ -24,7 +25,7 @@ function HeaderComponent() {
 
   return (
     <Header height={60}>
-      <Container size={1280}>
+      <Container size={840}>
         <Grid align="center" columns={24} h={70}>
           <Col span={12}>
             <Group>
@@ -33,10 +34,12 @@ function HeaderComponent() {
                   ROYAL.
                 </Title>
               </Link>
-              <Text weight={500}>Discover</Text>
+              {/* <Text weight={500}>Discover</Text>
               <Text weight={500}>Portfolio</Text>
               <Divider orientation="vertical" />
-              <IconSearch size={24} onClick={() => setOpened(true)} />
+              <ActionIcon onClick={() => setOpened(true)}>
+                <IconSearch size={24} />
+              </ActionIcon> */}
             </Group>
           </Col>
           <Col span={12}>
@@ -44,7 +47,9 @@ function HeaderComponent() {
               { user && (
                 <>
                   {/* <Text weight={500}>Post</Text> */}
-                  <Avatar src={user?.picture} alt="profile" radius="xl" />
+                  <Link href='/profile'>
+                    <Avatar src={user?.picture} alt="profile" radius="xl" />
+                  </Link>
                   <DropdownMenu />
                 </>
               )}

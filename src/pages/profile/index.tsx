@@ -36,7 +36,7 @@ const Profile = () => {
           opacity={0.85}
           zIndex={0}
         />
-        <Container size={1280}>
+        <Container size={840}>
           <div
             style={{
               zIndex: 1,
@@ -70,7 +70,7 @@ const Profile = () => {
         </Container>
       </Card>
 
-      <Container size={1280}>
+      <Container size={840}>
         <Card>
           <Group>
             <div>
