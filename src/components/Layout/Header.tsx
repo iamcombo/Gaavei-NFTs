@@ -1,10 +1,13 @@
-import { Avatar, Col, Container, Divider, Drawer, Grid, Group, Header, Text, TextInput, Title } from '@mantine/core';
-import { IconSearch } from '@tabler/icons-react';
-import DropdownMenu from './DropdownMenu';
+import Link from 'next/link';
 import { useState } from 'react';
+import { IconSearch } from '@tabler/icons-react';
+import { Avatar, Col, Container, Divider, Drawer, Grid, Group, Header, Text, TextInput, Title } from '@mantine/core';
+import DropdownMenu from './DropdownMenu';
+import { useAuth } from '@/contexts/authContext';
 
 function HeaderComponent() {
   const [opened, setOpened] = useState(false);
+  const { user } = useAuth();
 
   return (
     <Header height={60}>
@@ -12,7 +15,9 @@ function HeaderComponent() {
         <Grid align='center' columns={24} h={70}>
           <Col span={12}>
             <Group>
-              <Title order={3} mr={16}>ROYAL.</Title>
+              <Link href='/'>
+                <Title order={3} mr={16}>ROYAL.</Title>
+              </Link>
               <Text weight={500}>Discover</Text>
               <Text weight={500}>Portfolio</Text>
               <Divider orientation='vertical' />
@@ -20,10 +25,10 @@ function HeaderComponent() {
             </Group>
           </Col>
           <Col span={12}>
-            <Group position='right'>
+            <Group position='right' spacing={4}>
               {/* <Text weight={500}>Post</Text> */}
               <Avatar
-                src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80'
+                src={user?.picture}
                 alt='profile'
                 radius='xl'
               />

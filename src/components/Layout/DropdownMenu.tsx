@@ -1,9 +1,20 @@
+import { useAccount } from "wagmi";
 import { ActionIcon, Avatar, Divider, Group, Menu, Stack, Text, Title } from "@mantine/core";
-import { IconArrowsLeftRight, IconCaretDown, IconMessageCircle, IconPhoto, IconSearch, IconSettings, IconTrash } from "@tabler/icons-react";
+import { IconBuildingStore, IconCaretDown, IconLogout, IconReceiptTax, IconSettings, IconUser } from "@tabler/icons-react";
+import { shortenAddress } from "@/utils";
+import { useAuth } from "@/contexts/authContext";
 
 function DropdownMenu() {
+  const { address } = useAccount();
+  const { user, logout } = useAuth();
+
   return (
-    <Menu shadow="md" width={200} radius={16}>
+    <Menu 
+      shadow="md" 
+      width={200} 
+      radius={16}
+      transitionProps={{ transition: 'scale-y', duration: 250 }}  
+    >
       <Menu.Target>
         <ActionIcon color="dark">
           <IconCaretDown />
@@ -12,25 +23,25 @@ function DropdownMenu() {
 
       <Menu.Dropdown>
         <Menu.Item>
-          <Group spacing={4}>
-            <Avatar radius='xl' />
+          <Group spacing={10}>
+            <Avatar radius='xl' src={user?.picture} />
             <Stack spacing={4}>
-              <Text weight={600}>usename</Text>
-              <Text c='dimmed'>wallet address</Text>
+              <Text weight={600} truncate>{user?.name}</Text>
+              <Text c='dimmed' truncate>{shortenAddress(address) || ''}</Text>
             </Stack>
           </Group>
         </Menu.Item>
         <Divider my={8} />
-        <Stack spacing={4} px={8}>
+        <Stack spacing={4} px={10}>
           <Title order={4}>0 ETH</Title>
           <Text c='dimmed'>Wallet balance</Text>
         </Stack>
         <Divider my={8} />
-        <Menu.Item icon={<IconMessageCircle size={14} />}>Profile</Menu.Item>
-        <Menu.Item icon={<IconPhoto size={14} />}>Earning</Menu.Item>
-        <Menu.Item icon={<IconPhoto size={14} />}>Setting</Menu.Item>
-        <Menu.Item icon={<IconPhoto size={14} />}>Market</Menu.Item>
-        <Menu.Item icon={<IconPhoto size={14} />}>Logout</Menu.Item>
+        <Menu.Item icon={<IconUser stroke={1.5} size={14} />}>Profile</Menu.Item>
+        <Menu.Item icon={<IconReceiptTax stroke={1.5} size={14} />}>Earning</Menu.Item>
+        <Menu.Item icon={<IconSettings stroke={1.5} size={14} />}>Setting</Menu.Item>
+        <Menu.Item icon={<IconBuildingStore stroke={1.5} size={14} />}>Market</Menu.Item>
+        <Menu.Item onClick={logout} icon={<IconLogout stroke={1.5} size={14} />}>Logout</Menu.Item>
       </Menu.Dropdown>
     </Menu>
   );

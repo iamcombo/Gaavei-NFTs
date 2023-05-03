@@ -1,4 +1,4 @@
-import { Badge, Button, Card, Group, Image, Text } from "@mantine/core";
+import { Badge, Button, Card, Col, Flex, Grid, Group, Image, SimpleGrid, Text } from "@mantine/core";
 
 function TrendingCard() {
   return (
@@ -23,9 +23,22 @@ function TrendingCard() {
         activities on and around the fjords of Norway
       </Text>
 
-      <Button variant="outline" color="slate.8" fullWidth mt="md" radius="md">
-        BUY
-      </Button>
+      <Grid columns={24} align="center">
+        <Col span={12}>
+          <Text weight={600}>$63.04</Text>
+        </Col>
+        <Col span={12}>
+          <Button
+            fullWidth 
+            variant="outline" 
+            color="slate.8" 
+            radius="md"
+            mt="md" 
+          >
+            BUY
+          </Button>
+        </Col>
+      </Grid>
     </Card>
   );
 }

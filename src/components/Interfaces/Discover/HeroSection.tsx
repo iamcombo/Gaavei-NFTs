@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import Image from "next/image";
-import { Badge, Button, Card, Col, Grid, Group, Overlay, Stack, Text, Title } from "@mantine/core";
+import { Badge, Button, Card, Col, Grid, Group, Overlay, Stack, Text, Title, rem } from "@mantine/core";
 import album from '@/assets/album.jpg'
 import { Carousel } from "@mantine/carousel";
 import Autoplay from 'embla-carousel-autoplay';
@@ -14,6 +14,17 @@ function HeroSection() {
       withControls={false}
       slideSize="100%"
       plugins={[autoplay.current]}
+      styles={{
+        indicator: {
+          width: rem(12),
+          height: rem(4),
+          transition: 'width 250ms ease',
+
+          '&[data-active]': {
+            width: rem(40),
+          },
+        },
+      }}
     >
       <Carousel.Slide>
         <Card h={240} radius={0} sx={{ position: 'relative' }}>

@@ -2,10 +2,10 @@ import { IconArrowRight } from "@tabler/icons-react";
 import { Button, Center, Col, Grid, Title } from "@mantine/core";
 import { NewReleaseCard } from "@/components/Card";
 
-function NewRelease() {
+const LocalRelease = () => {
   return (
     <>
-      <Title order={4} weight={600} mb={16}>New Release</Title>
+      <Title order={4} weight={600} mb={16}>Local Release</Title>
       <Grid columns={24} gutter={32}>
         <Col span={12}>
           <NewReleaseCard />
@@ -27,4 +27,4 @@ function NewRelease() {
   );
 }
 
-export default NewRelease;
+export default LocalRelease;
