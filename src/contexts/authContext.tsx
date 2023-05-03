@@ -27,20 +27,20 @@ function AuthProvider({ children }: { children: ReactNode }) {
       const userInfo = localStorage.getItem('userInfo');
       if (!userInfo) return;
       setUser(JSON.parse(userInfo));
-    }
+    };
     loadSaved();
   }, []);
 
-  const saveProfile = (user: IUser) => {
-    localStorage.setItem('userInfo', JSON.stringify(user));
-    setUser(user);
-  }
+  const saveProfile = (_user: IUser) => {
+    localStorage.setItem('userInfo', JSON.stringify(_user));
+    setUser(_user);
+  };
 
   const logout = () => {
     localStorage.setItem('userInfo', '');
     setUser(null);
     push('/signIn');
-  }
+  };
 
   return (
     <AuthContext.Provider
@@ -50,7 +50,7 @@ function AuthProvider({ children }: { children: ReactNode }) {
         saveProfile
       }}
     >{children}</AuthContext.Provider>
-  )
+  );
 }
 
 export default AuthProvider;

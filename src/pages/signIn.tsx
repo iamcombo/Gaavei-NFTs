@@ -1,8 +1,8 @@
-import { useAuth } from "@/contexts/authContext";
-import { Button, Container, Space, Stack, Title } from "@mantine/core";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useAuth } from '@/contexts/authContext';
+import { Button, Container, Space, Stack, Title } from '@mantine/core';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useGoogleLogin } from '@react-oauth/google';
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
 const Signin = () => {
   const { push } = useRouter();
@@ -10,21 +10,26 @@ const Signin = () => {
 
   const login = useGoogleLogin({
     onSuccess: async (credentialResponse) => {
-      const userInfo = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
-        headers: {
-          Authorization: `Bearer ${credentialResponse.access_token}`
+      const userInfo = await fetch(
+        'https://www.googleapis.com/oauth2/v3/userinfo',
+        {
+          headers: {
+            Authorization: `Bearer ${credentialResponse.access_token}`,
+          },
         }
-      })
+      );
       const data = await userInfo.json();
       saveProfile(data);
 
       push('/');
     },
-  }); 
+  });
 
   return (
     <Container size={420} py={48}>
-      <Title order={2} align="center">ROYAL.</Title>
+      <Title order={2} align="center">
+        ROYAL.
+      </Title>
       <Space h={32} />
       <Stack justify="center">
         <ConnectButton.Custom>
@@ -51,7 +56,7 @@ const Signin = () => {
               <div
                 {...(!ready && {
                   'aria-hidden': true,
-                  'style': {
+                  style: {
                     opacity: 0,
                     pointerEvents: 'none',
                     userSelect: 'none',
@@ -61,7 +66,15 @@ const Signin = () => {
                 {(() => {
                   if (!connected) {
                     return (
-                      <Button fullWidth color="dark" size="md" radius={8}  px={32} onClick={openConnectModal} type="button">
+                      <Button
+                        fullWidth
+                        color="dark"
+                        size="md"
+                        radius={8}
+                        px={32}
+                        onClick={openConnectModal}
+                        type="button"
+                      >
                         Connect Wallet
                       </Button>
                     );
@@ -69,14 +82,30 @@ const Signin = () => {
 
                   if (chain.unsupported) {
                     return (
-                      <Button fullWidth color="dark" size="md" radius={8}  px={32} onClick={openChainModal} type="button">
+                      <Button
+                        fullWidth
+                        color="dark"
+                        size="md"
+                        radius={8}
+                        px={32}
+                        onClick={openChainModal}
+                        type="button"
+                      >
                         Wrong network
                       </Button>
                     );
                   }
 
                   return (
-                    <Button fullWidth color="dark" size="md" radius={8} px={32} onClick={openAccountModal} type="button">
+                    <Button
+                      fullWidth
+                      color="dark"
+                      size="md"
+                      radius={8}
+                      px={32}
+                      onClick={openAccountModal}
+                      type="button"
+                    >
                       {account.displayName}
                       {account.displayBalance
                         ? ` (${account.displayBalance})`
@@ -88,12 +117,20 @@ const Signin = () => {
             );
           }}
         </ConnectButton.Custom>
-        <Button fullWidth variant="outline" color="dark" size="md" radius={8} px={32} onClick={() => login()}>
+        <Button
+          fullWidth
+          variant="outline"
+          color="dark"
+          size="md"
+          radius={8}
+          px={32}
+          onClick={() => login()}
+        >
           Login with google
         </Button>
       </Stack>
     </Container>
   );
-}
+};
 
 export default Signin;

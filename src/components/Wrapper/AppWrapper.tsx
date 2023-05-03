@@ -1,11 +1,11 @@
 import { Raleway } from "next/font/google";
 import { MantineProvider } from "@mantine/core";
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import type { CSSProperties, ReactNode } from "react";
+import AuthProvider from "@/contexts/authContext";
 import Rainbow from "./Rainbow";
 import AppLayout from "../Layout/AppLayout";
 import { RouterTransition } from "../PageRoute/RouterTransition";
-import type { CSSProperties, ReactNode } from "react";
-import AuthProvider from "@/contexts/authContext";
 
 const raleway: unknown = Raleway({
   subsets: ['latin'],

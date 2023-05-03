@@ -1,6 +1,13 @@
-import Head from 'next/head'
-import { Container, Space } from '@mantine/core'
-import { HeroSection, Learn, LocalRelease, NewRelease, TopCollectors, Trending } from '@/components/Interfaces/Discover'
+import {
+  HeroSection,
+  Learn,
+  LocalRelease,
+  NewRelease,
+  TopCollectors,
+  Trending,
+} from '@/components/Interfaces/Discover';
+import { Container, Space } from '@mantine/core';
+import Head from 'next/head';
 
 export default function Home() {
   return (
@@ -24,5 +31,5 @@ export default function Home() {
         </Container>
       </main>
     </>
-  )
+  );
 }

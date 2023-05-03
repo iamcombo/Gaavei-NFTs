@@ -1,8 +1,9 @@
 import { useAccount } from "wagmi";
 import { ActionIcon, Avatar, Divider, Group, Menu, Stack, Text, Title } from "@mantine/core";
-import { IconBuildingStore, IconCaretDown, IconLogout, IconReceiptTax, IconSettings, IconUser } from "@tabler/icons-react";
+import { IconCaretDown, IconLogout, IconReceiptTax, IconUser } from "@tabler/icons-react";
 import { shortenAddress } from "@/utils";
 import { useAuth } from "@/contexts/authContext";
+import Link from "next/link";
 
 function DropdownMenu() {
   const { address } = useAccount();
@@ -33,14 +34,16 @@ function DropdownMenu() {
         </Menu.Item>
         <Divider my={8} />
         <Stack spacing={4} px={10}>
-          <Title order={4}>0 ETH</Title>
-          <Text c='dimmed'>Wallet balance</Text>
+          <Title order={6}>0 ETH</Title>
+          <Text c='dimmed' fz={14}>Wallet balance</Text>
         </Stack>
         <Divider my={8} />
-        <Menu.Item icon={<IconUser stroke={1.5} size={14} />}>Profile</Menu.Item>
+        <Link href='/profile'>
+          <Menu.Item icon={<IconUser stroke={1.5} size={14} />}>Profile</Menu.Item>
+        </Link>
         <Menu.Item icon={<IconReceiptTax stroke={1.5} size={14} />}>Earning</Menu.Item>
-        <Menu.Item icon={<IconSettings stroke={1.5} size={14} />}>Setting</Menu.Item>
-        <Menu.Item icon={<IconBuildingStore stroke={1.5} size={14} />}>Market</Menu.Item>
+        {/* <Menu.Item icon={<IconSettings stroke={1.5} size={14} />}>Setting</Menu.Item> */}
+        {/* <Menu.Item icon={<IconBuildingStore stroke={1.5} size={14} />}>Market</Menu.Item> */}
         <Menu.Item onClick={logout} icon={<IconLogout stroke={1.5} size={14} />}>Logout</Menu.Item>
       </Menu.Dropdown>
     </Menu>

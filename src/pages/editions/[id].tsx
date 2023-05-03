@@ -18,13 +18,13 @@ function Editions() {
               </div>
             </Group>
           </Col>
-          <Col span={12}>
-          </Col>
+          {/* <Col span={12}>
+          </Col> */}
         </Grid>
         <Divider />
         <Text>Market stats</Text>
         <Grid>
-          <Col></Col>
+          {/* <Col></Col> */}
         </Grid>
       </Container>
     </div>

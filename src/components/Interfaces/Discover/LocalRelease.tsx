@@ -25,6 +25,6 @@ const LocalRelease = () => {
       </Center>
     </>
   );
-}
+};
 
 export default LocalRelease;

@@ -22,7 +22,7 @@ const Rainbow = ({ children }: { children: ReactNode}) => {
     autoConnect: true,
     connectors,
     provider
-  })
+  });
 
   return (
     <WagmiConfig client={wagmiClient}>
@@ -32,6 +32,6 @@ const Rainbow = ({ children }: { children: ReactNode}) => {
     </WagmiConfig>
 
   );
-}
+};
 
 export default Rainbow;
