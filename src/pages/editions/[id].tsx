@@ -1,5 +1,7 @@
 import {
+  Accordion,
   ActionIcon,
+  Affix,
   Avatar,
   Badge,
   Button,
@@ -15,12 +17,32 @@ import {
   Spoiler,
   Text,
   Title,
+  Transition,
+  rem,
 } from '@mantine/core';
-import { IconPlayerPlayFilled } from '@tabler/icons-react';
+import { useWindowScroll } from '@mantine/hooks';
+import { IconArrowUp, IconPlayerPlayFilled } from '@tabler/icons-react';
 
 function Editions() {
+  const [scroll, scrollTo] = useWindowScroll();
+
   return (
     <div>
+      <Affix position={{ bottom: rem(20), right: rem(20) }}>
+        <Transition transition="slide-up" mounted={scroll.y > 0}>
+          {(transitionStyles) => (
+            <Button
+              color='dark'
+              leftIcon={<IconArrowUp size="1rem" />}
+              style={transitionStyles}
+              onClick={() => scrollTo({ y: 0 })}
+            >
+              Scroll to top
+            </Button>
+          )}
+        </Transition>
+      </Affix>
+
       <Card h={320} p={0} radius={0} sx={{ position: 'relative' }}>
         <Image
           alt="banner"
@@ -34,21 +56,23 @@ function Editions() {
           opacity={0.85}
           zIndex={0}
         />
-        <Container size={840} sx={{ height: 'inherit' }}>
+        <Container size={840} sx={{ height: 'inherit', position: 'relative' }}>
           <div
             style={{
               zIndex: 1,
               position: 'absolute',
               color: '#FFF',
+              width: '100%',
               height: 'inherit',
             }}
           >
             <Grid
               columns={24}
+              p={0}
               align="end"
-              sx={{ width: '100vw', height: 'inherit' }}
+              sx={{ height: 'inherit' }}
             >
-              <Col span={12}>
+              <Col span={24}>
                 <Group position="apart">
                   <Group spacing="lg">
                     <Avatar
@@ -158,7 +182,31 @@ function Editions() {
         </Grid>
         <Space h={40} />
         <Title order={3}>Contract Details</Title>
-        <Text c='dimmed'>View details of the contracts for this release.</Text>
+        <Text c='dimmed' mb={16}>View details of the contracts for this release.</Text>
+        <Accordion variant="filled" radius="md" defaultValue="customization">
+          <Accordion.Item value="customization">
+            <Accordion.Control>RELEASE DATE</Accordion.Control>
+            <Accordion.Panel>April 26, 2023</Accordion.Panel>
+          </Accordion.Item>
+
+          <Accordion.Item value="flexibility">
+            <Accordion.Control>SONG CONTRACT ADDRESS</Accordion.Control>
+            <Accordion.Panel>0x......</Accordion.Panel>
+          </Accordion.Item>
+
+          <Accordion.Item value="focus-ring">
+            <Accordion.Control>BLOCKCHAIN</Accordion.Control>
+            <Accordion.Panel>Ethereum</Accordion.Panel>
+          </Accordion.Item>
+          <Accordion.Item value="focus-rings">
+            <Accordion.Control>TOKEN STANDARD</Accordion.Control>
+            <Accordion.Panel>ERC-721</Accordion.Panel>
+          </Accordion.Item>
+          <Accordion.Item value="focus-ringa">
+            <Accordion.Control>RESALE ROYALTY</Accordion.Control>
+            <Accordion.Panel>10%</Accordion.Panel>
+          </Accordion.Item>
+        </Accordion>
       </Container>
     </div>
   );
