@@ -1,8 +1,6 @@
-import { AudioPlayer } from '@/components';
 import {
   Accordion,
   ActionIcon,
-  Affix,
   Avatar,
   Badge,
   Button,
@@ -18,33 +16,18 @@ import {
   Spoiler,
   Text,
   Title,
-  Transition,
-  rem,
 } from '@mantine/core';
 import { useWindowScroll } from '@mantine/hooks';
-import { IconArrowUp, IconPlayerPlayFilled } from '@tabler/icons-react';
+import { IconPlayerPlayFilled } from '@tabler/icons-react';
+import { AudioPlayer, ScrollToTop } from '@/components';
 
 function Editions() {
   const [scroll, scrollTo] = useWindowScroll();
 
   return (
-    <div>
+    <>
       <AudioPlayer />
-      <Affix position={{ bottom: rem(20), right: rem(20) }}>
-        <Transition transition="slide-up" mounted={scroll.y > 0}>
-          {(transitionStyles) => (
-            <Button
-              color='dark'
-              leftIcon={<IconArrowUp size="1rem" />}
-              style={transitionStyles}
-              onClick={() => scrollTo({ y: 0 })}
-              radius={8}
-            >
-              Scroll to top
-            </Button>
-          )}
-        </Transition>
-      </Affix>
+      <ScrollToTop {...{ scroll, scrollTo }} />
 
       <Card h={320} p={0} radius={0} sx={{ position: 'relative' }}>
         <Image
@@ -76,23 +59,18 @@ function Editions() {
               sx={{ height: 'inherit' }}
             >
               <Col span={24}>
-                <Group position="apart">
-                  <Group spacing="lg">
-                    <Avatar
-                      alt=""
-                      src="https://www.sound.xyz/_next/image?url=https%3A%2F%2Fd2i9ybouka0ieh.cloudfront.net%2Fartist-uploads%2F4233e090-a728-489b-8183-158aa3906085%2FRELEASE_COVER_IMAGE%2F5901564-newImage.png&w=384&q=75"
-                      radius={16}
-                      size={80}
-                    />
-                    <div>
-                      <Badge color="slate.5">Single</Badge>
-                      <Text weight={600}>Xi Li</Text>
-                      <Title weight={800}>Think I am in love with you</Title>
-                    </div>
-                  </Group>
-                  <ActionIcon radius={999} size={60} variant="light">
-                    <IconPlayerPlayFilled />
-                  </ActionIcon>
+                <Group spacing="lg">
+                  <Avatar
+                    alt=""
+                    src="https://www.sound.xyz/_next/image?url=https%3A%2F%2Fd2i9ybouka0ieh.cloudfront.net%2Fartist-uploads%2F4233e090-a728-489b-8183-158aa3906085%2FRELEASE_COVER_IMAGE%2F5901564-newImage.png&w=384&q=75"
+                    radius={16}
+                    size={80}
+                  />
+                  <div>
+                    <Badge color="slate.5">Single</Badge>
+                    <Text weight={600}>Xi Li</Text>
+                    <Title weight={800}>Think I am in love with you</Title>
+                  </div>
                 </Group>
               </Col>
             </Grid>
@@ -211,8 +189,8 @@ function Editions() {
           </Accordion.Item>
         </Accordion>
       </Container>
-    </div>
+    </>
   );
-}
+};
 
 export default Editions;
