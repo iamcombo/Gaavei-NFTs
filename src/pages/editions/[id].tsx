@@ -1,6 +1,5 @@
 import {
   Accordion,
-  ActionIcon,
   Avatar,
   Badge,
   Button,
@@ -18,7 +17,6 @@ import {
   Title,
 } from '@mantine/core';
 import { useWindowScroll } from '@mantine/hooks';
-import { IconPlayerPlayFilled } from '@tabler/icons-react';
 import { AudioPlayer, ScrollToTop } from '@/components';
 
 function Editions() {
