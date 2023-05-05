@@ -1,3 +1,4 @@
+import { AudioPlayer } from '@/components';
 import {
   Accordion,
   ActionIcon,
@@ -28,6 +29,7 @@ function Editions() {
 
   return (
     <div>
+      <AudioPlayer />
       <Affix position={{ bottom: rem(20), right: rem(20) }}>
         <Transition transition="slide-up" mounted={scroll.y > 0}>
           {(transitionStyles) => (
@@ -36,6 +38,7 @@ function Editions() {
               leftIcon={<IconArrowUp size="1rem" />}
               style={transitionStyles}
               onClick={() => scrollTo({ y: 0 })}
+              radius={8}
             >
               Scroll to top
             </Button>
