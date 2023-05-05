@@ -118,7 +118,7 @@ function Editions() {
         <Title order={3}>Rewards</Title>
         <Text c='dimmed' mb={16}>View all rewards and perks for collecting this release.</Text>
         <Grid columns={24}>
-          <Col span={12}>
+          <Col sm={12}>
             <Card shadow='sm' radius={16} p={24} withBorder>
               <Image alt='' src='https://www.sound.xyz/_next/image?url=%2Fimages%2Fgolden_egg_icon.png&w=64&q=75' width={40} height={40} />
               <Text weight={600}>Golden Egg</Text>
@@ -128,7 +128,7 @@ function Editions() {
               </Text>
             </Card>
           </Col>
-          <Col span={12}>
+          <Col sm={12}>
             <Card shadow='sm' radius={16} p={24} withBorder>
               <Image alt='' src='https://www.sound.xyz/_next/image?url=%2Fimages%2Fgolden_egg_icon.png&w=64&q=75' width={40} height={40} />
               <Text weight={600}>Golden Egg</Text>
@@ -138,7 +138,7 @@ function Editions() {
               </Text>
             </Card>
           </Col>
-          <Col span={12}>
+          <Col sm={12}>
             <Card shadow='sm' radius={16} p={24} withBorder>
               <Image alt='' src='https://www.sound.xyz/_next/image?url=%2Fimages%2Fgolden_egg_icon.png&w=64&q=75' width={40} height={40} />
               <Text weight={600}>Golden Egg</Text>
@@ -148,7 +148,7 @@ function Editions() {
               </Text>
             </Card>
           </Col>
-          <Col span={12}>
+          <Col sm={12}>
             <Card shadow='sm' radius={16} p={24} withBorder>
               <Image alt='' src='https://www.sound.xyz/_next/image?url=%2Fimages%2Fgolden_egg_icon.png&w=64&q=75' width={40} height={40} />
               <Text weight={600}>Golden Egg</Text>

@@ -7,6 +7,7 @@ const Control = ({ audioRef,  progressBarRef, duration, setTimeProgress }: any) 
   const [isPlaying, setIsPlaying] = useState(false);
 
   const repeat = useCallback(() => {
+    if (!audioRef?.current) return;
     const currentTime = audioRef.current.currentTime;
     setTimeProgress(currentTime);
     progressBarRef.current.value = currentTime;

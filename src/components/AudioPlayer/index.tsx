@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Col, Dialog, Grid, Group } from "@mantine/core";
+import { Col, Container, Dialog, Grid, Group } from "@mantine/core";
 import Control from "./Control";
 import ProgressBar from "./ProgressBar";
 import DisplayTrack from "./DisplayTrack";
@@ -25,13 +25,19 @@ const AudioPlayer = () => {
       opened={opened}
       onClose={() => {}}
       radius={16}
-      size={410}
+      w={{ base: 400 }}
       withCloseButton={false}
-      shadow="md"
+      shadow="sm"
       withBorder
       transition="slide-up"
-      transitionDuration={300} 
+      transitionDuration={300}
       transitionTimingFunction="ease"
+      sx={{
+        '@media (max-width: 36em)': {
+          width: '100%',
+          left: 10,
+        }
+      }}
     >
       <Grid columns={24} justify="space-between" align='center'>
         <Col span={18}>

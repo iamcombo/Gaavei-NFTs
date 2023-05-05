@@ -8,16 +8,17 @@ import {
   Container,
   CopyButton,
   Divider,
+  Flex,
   Grid,
   Group,
   Image,
   Overlay,
-  Stack,
   Text,
   Title,
 } from '@mantine/core';
 import { useAccount } from 'wagmi';
 import { IconCopy } from '@tabler/icons-react';
+import useIsClient from '@/hooks/useIsClient';
 
 const Profile = () => {
   const { address } = useAccount();
@@ -44,37 +45,39 @@ const Profile = () => {
               zIndex: 1,
               position: 'absolute',
               color: '#FFF',
-              height: 'inherit',
+              height: '100%',
             }}
           >
             <Grid
               columns={24}
               sx={{ width: '100vw', height: 'inherit' }}
               py={24}
+              align='center'
+              h='100%'
             >
-              <Col md={12}>
-                <Stack spacing="lg">
-                  <Avatar
-                    alt={user?.name}
-                    src={user?.picture}
-                    radius={999}
-                    size={80}
-                  />
-                  <div>
-                    <Badge color="slate.5">Single</Badge>
-                    <Group spacing={4}>
-                      <Text weight={600}>{address}</Text>
-                      <CopyButton value={address as string}>
-                        {({ copied, copy }) => (
-                          <ActionIcon color={copied ? 'teal' : 'blue'} onClick={copy}>
-                            <IconCopy />
-                          </ActionIcon>
-                        )}
-                      </CopyButton>
-                    </Group>
-                    <Title weight={800}>{user?.name}</Title>
-                  </div>
-                </Stack>
+              <Col span={6} sm={4} md={12}>
+                <Avatar
+                  alt={user?.name}
+                  src={user?.picture}
+                  radius={999}
+                  size={80}
+                />
+              </Col>
+              <Col span={18}>
+                <div>
+                  <Badge color="slate.5">Single</Badge>
+                  <Flex>
+                    <Text weight={ 600} truncate>{useIsClient() ? address : ''}</Text>
+                    <CopyButton value={address as string}>
+                      {({ copied, copy }) => (
+                        <ActionIcon color={copied ? 'teal' : 'blue'} onClick={copy}>
+                          <IconCopy />
+                        </ActionIcon>
+                      )}
+                    </CopyButton>
+                  </Flex>
+                  <Title weight={800}>{user?.name}</Title>
+                </div>
               </Col>
             </Grid>
           </div>
