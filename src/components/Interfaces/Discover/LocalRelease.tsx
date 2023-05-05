@@ -7,16 +7,16 @@ const LocalRelease = () => {
     <>
       <Title order={4} weight={600} mb={16}>Local Release</Title>
       <Grid columns={24} gutter={32}>
-        <Col span={12}>
+        <Col sm={12}>
           <NewReleaseCard />
         </Col>
-        <Col span={12}>
+        <Col sm={12}>
           <NewReleaseCard />
         </Col>
-        <Col span={12}>
+        <Col sm={12}>
           <NewReleaseCard />
         </Col>
-        <Col span={12}>
+        <Col sm={12}>
           <NewReleaseCard />
         </Col>
       </Grid>

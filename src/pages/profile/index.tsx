@@ -1,11 +1,12 @@
 import { useAuth } from '@/contexts';
 import {
+  ActionIcon,
   Avatar,
   Badge,
-  Button,
   Card,
   Col,
   Container,
+  CopyButton,
   Divider,
   Grid,
   Group,
@@ -16,6 +17,7 @@ import {
   Title,
 } from '@mantine/core';
 import { useAccount } from 'wagmi';
+import { IconCopy } from '@tabler/icons-react';
 
 const Profile = () => {
   const { address } = useAccount();
@@ -50,7 +52,7 @@ const Profile = () => {
               sx={{ width: '100vw', height: 'inherit' }}
               py={24}
             >
-              <Col span={12}>
+              <Col md={12}>
                 <Stack spacing="lg">
                   <Avatar
                     alt={user?.name}
@@ -60,7 +62,16 @@ const Profile = () => {
                   />
                   <div>
                     <Badge color="slate.5">Single</Badge>
-                    <Text weight={600}>{address}</Text>
+                    <Group spacing={4}>
+                      <Text weight={600}>{address}</Text>
+                      <CopyButton value={address as string}>
+                        {({ copied, copy }) => (
+                          <ActionIcon color={copied ? 'teal' : 'blue'} onClick={copy}>
+                            <IconCopy />
+                          </ActionIcon>
+                        )}
+                      </CopyButton>
+                    </Group>
                     <Title weight={800}>{user?.name}</Title>
                   </div>
                 </Stack>

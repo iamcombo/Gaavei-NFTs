@@ -3,7 +3,7 @@ import { Col, Container, Grid, SimpleGrid, Text, Title } from '@mantine/core';
 function Footer() {
   return (
     <Container size={1280} py={40}>
-      <Grid columns={24}>
+      <Grid columns={24} gutter={32}>
         <Col md={6}>
           <Title order={4}>ROYAL.</Title>
         </Col>

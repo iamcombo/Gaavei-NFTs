@@ -6,10 +6,10 @@ function Trending() {
     <div>
       <Title order={4} weight={600} mb={16}>Trending</Title>
       <Grid columns={24} gutter={32}>
-        <Col span={12}>
+        <Col xs={12}>
           <TrendingCard />
         </Col>
-        <Col span={12}>
+        <Col xs={12}>
           <TrendingCard />
         </Col>
       </Grid>

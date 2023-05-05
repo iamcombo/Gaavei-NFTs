@@ -32,23 +32,27 @@ function Learn() {
             </Col>
           </Grid>
           <Center my={16}>
-            <Button compact variant='subtle' rightIcon={<IconArrowRight size={16} />}>View all</Button>
+            <Button compact variant='subtle' rightIcon={<IconArrowRight size={16} />}>
+              View all
+            </Button>
           </Center>
         </Tabs.Panel>
         <Tabs.Panel value="news">
           <Grid columns={24}>
-            <Col span={8}>
+            <Col xs={12} md={8}>
               <ArticleCard />
             </Col>
-            <Col span={8}>
+            <Col xs={12} md={8}>
               <ArticleCard />
             </Col>
-            <Col span={8}>
+            <Col xs={12} md={8}>
               <ArticleCard />
             </Col>
           </Grid>
           <Center my={16}>
-            <Button compact variant='subtle' rightIcon={<IconArrowRight size={16} />}>View all</Button>
+            <Button compact variant='subtle' rightIcon={<IconArrowRight size={16} />}>
+              View all
+            </Button>
           </Center>
         </Tabs.Panel>
       </StyledTabs>

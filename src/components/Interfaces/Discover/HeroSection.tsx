@@ -60,7 +60,7 @@ function HeroSection() {
               align="center"
               sx={{ width: '100vw', height: 'inherit' }}
             >
-              <Col span={12}>
+              <Col span={24} sm={12}>
                 <Stack spacing="xl">
                   <div>
                     <Badge color="slate.5">Single</Badge>
@@ -103,7 +103,7 @@ function HeroSection() {
               align="center"
               sx={{ width: '100vw', height: 'inherit' }}
             >
-              <Col span={12}>
+              <Col span={24} sm={12}>
                 <Stack spacing="xl">
                   <div>
                     <Badge color="slate.5">Single</Badge>
