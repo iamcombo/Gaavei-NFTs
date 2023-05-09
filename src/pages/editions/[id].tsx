@@ -1,3 +1,8 @@
+import headerImage from '@/assets/this-is-our-time-cover.jpg';
+import { AudioPlayer, ScrollToTop } from '@/components';
+import { ModalBuy } from '@/components/Modal';
+import ABI from '@/constants/ABI.json';
+import { connectContract } from '@/utils';
 import {
   Accordion,
   Avatar,
@@ -15,44 +20,39 @@ import {
   Text,
   Title,
 } from '@mantine/core';
+import { useWindowScroll } from '@mantine/hooks';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { useWindowScroll } from '@mantine/hooks';
-import { ModalBuy } from '@/components/Modal';
-import { AudioPlayer, ScrollToTop } from '@/components';
-import headerImage from '@/assets/this-is-our-time-cover.jpg';
-import { connectContract } from '@/utils';
-import ABI from '@/constants/ABI.json';
 
 function Editions() {
-  const { query } =  useRouter();
+  const { query } = useRouter();
 
   const [scroll, scrollTo] = useWindowScroll();
   const [modalBuy, setModalBuy] = useState(false);
   const [metadata, setMetadata] = useState<any | null>(null);
 
   const getMetadata = async () => {
-    const { Contract } = connectContract('0x0Bf7e70B88ABd4D3C557AD091383415B867E9777', ABI);
+    const { Contract } = connectContract(
+      '0x0Bf7e70B88ABd4D3C557AD091383415B867E9777',
+      ABI
+    );
 
     if (!Contract || !query?.id) return;
-    const metadataUri = await Contract.uri(query.id); 
-    
+    const metadataUri = await Contract.uri(query.id);
+
     const res = await fetch(metadataUri);
     const data = await res.json();
     setMetadata(data);
   };
-  
+
   useEffect(() => {
     getMetadata();
   }, [query]);
 
   return (
     <>
-      <ModalBuy 
-        modal={modalBuy}
-        setModal={setModalBuy}
-      />
+      <ModalBuy modal={modalBuy} setModal={setModalBuy} />
       <AudioPlayer />
       <ScrollToTop {...{ scroll, scrollTo }} />
 
@@ -78,12 +78,7 @@ function Editions() {
               height: 'inherit',
             }}
           >
-            <Grid
-              columns={24}
-              p={0}
-              align="end"
-              sx={{ height: 'inherit' }}
-            >
+            <Grid columns={24} p={0} align="end" sx={{ height: 'inherit' }}>
               <Col span={24}>
                 <Group spacing="lg">
                   <Avatar
@@ -110,12 +105,12 @@ function Editions() {
             <Text fw={500}>Price</Text>
             <Title order={3}>FREE</Title>
           </div>
-          <Button 
-            size="lg" 
-            radius={8} 
-            px={64} 
-            color="dark" 
-            variant="outline" 
+          <Button
+            size="lg"
+            radius={8}
+            px={64}
+            color="dark"
+            variant="outline"
             onClick={() => setModalBuy(true)}
           >
             BUY
@@ -128,52 +123,79 @@ function Editions() {
         </Spoiler>
         <Space h={40} />
         <Title order={3}>Rewards</Title>
-        <Text c='dimmed' mb={16}>View all rewards and perks for collecting this release.</Text>
+        <Text c="dimmed" mb={16}>
+          View all rewards and perks for collecting this release.
+        </Text>
         <Grid columns={24}>
           <Col sm={12}>
-            <Card shadow='sm' radius={16} p={24} withBorder>
-              <Image alt='' src='https://www.sound.xyz/_next/image?url=%2Fimages%2Fgolden_egg_icon.png&w=64&q=75' width={40} height={40} />
-              <Text weight={600}>Golden Egg</Text>
+            <Card shadow="sm" radius={16} p={24} withBorder sx={{ height: '100%' }}>
+              <Image
+                alt=""
+                src="https://www.sound.xyz/_next/image?url=%2Fimages%2Fgolden_egg_icon.png&w=64&q=75"
+                width={40}
+                height={40}
+              />
+              <Text weight={600}>Audio Download</Text>
               <Text>
-                The egg is only revealed after the song sells out. 
-                The winner receives a unique 1/1 NFT chosen by the artist.
+                Collectors can download the uncompressed lossless audio file for
+                this song.
               </Text>
             </Card>
           </Col>
           <Col sm={12}>
-            <Card shadow='sm' radius={16} p={24} withBorder>
-              <Image alt='' src='https://www.sound.xyz/_next/image?url=%2Fimages%2Fgolden_egg_icon.png&w=64&q=75' width={40} height={40} />
+            <Card shadow="sm" radius={16} p={24} withBorder sx={{ height: '100%' }}>
+              <Image
+                alt=""
+                src="https://www.sound.xyz/_next/image?url=%2Fimages%2Fgolden_egg_icon.png&w=64&q=75"
+                width={40}
+                height={40}
+              />
               <Text weight={600}>Royalty</Text>
               <Text>
-                The egg is only revealed after the song sells out. 
-                The winner receives a unique 1/1 NFT chosen by the artist.
+                The egg is only revealed after the song sells out. The winner
+                receives a unique 1/1 NFT chosen by the artist.
               </Text>
             </Card>
           </Col>
           <Col sm={12}>
-            <Card shadow='sm' radius={16} p={24} withBorder>
-              <Image alt='' src='https://www.sound.xyz/_next/image?url=%2Fimages%2Fgolden_egg_icon.png&w=64&q=75' width={40} height={40} />
-              <Text weight={600}>Claim new release</Text>
-              <Text>
-                The egg is only revealed after the song sells out. 
-                The winner receives a unique 1/1 NFT chosen by the artist.
-              </Text>
+            <Card shadow="sm" radius={16} p={24} withBorder sx={{ height: '100%' }}>
+              <Image
+                alt=""
+                src="https://www.sound.xyz/_next/image?url=%2Fimages%2Fgolden_egg_icon.png&w=64&q=75"
+                width={40}
+                height={40}
+              />
+              <Text weight={600}>Acoustic Cover</Text>
+              <Spoiler maxHeight={80} showLabel="Show more" hideLabel="Hide">
+                <Text>
+                  AL3C golden eggs holders can claim an acoustic cover of any song
+                  at any time (up to three requests). All golden egg covers will
+                  be minted on Zora and/or Glass Protocol and golden egg holders
+                  will be airdropped an edition.
+                </Text>
+              </Spoiler>
             </Card>
           </Col>
           <Col sm={12}>
-            <Card shadow='sm' radius={16} p={24} withBorder>
-              <Image alt='' src='https://www.sound.xyz/_next/image?url=%2Fimages%2Fgolden_egg_icon.png&w=64&q=75' width={40} height={40} />
-              <Text weight={600}>Golden Egg</Text>
+            <Card shadow="sm" radius={16} p={24} withBorder sx={{ height: '100%' }}>
+              <Image
+                alt=""
+                src="https://www.sound.xyz/_next/image?url=%2Fimages%2Fgolden_egg_icon.png&w=64&q=75"
+                width={40}
+                height={40}
+              />
+              <Text weight={600}>Dinner Meetup</Text>
               <Text>
-                The egg is only revealed after the song sells out. 
-                The winner receives a unique 1/1 NFT chosen by the artist.
+                Winner has the choice to schedule a dinner with artist or a party.
               </Text>
             </Card>
           </Col>
         </Grid>
         <Space h={40} />
         <Title order={3}>Contract Details</Title>
-        <Text c='dimmed' mb={16}>View details of the contracts for this release.</Text>
+        <Text c="dimmed" mb={16}>
+          View details of the contracts for this release.
+        </Text>
         <Accordion variant="filled" radius="md" defaultValue="customization">
           <Accordion.Item value="customization">
             <Accordion.Control>RELEASE DATE</Accordion.Control>
@@ -203,6 +225,6 @@ function Editions() {
       </Container>
     </>
   );
-};
+}
 
 export default Editions;
