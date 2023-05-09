@@ -14,7 +14,7 @@ function DropdownMenu() {
       shadow="md" 
       width={200} 
       radius={16}
-      transitionProps={{ transition: 'scale-y', duration: 250 }}  
+      transitionProps={{ transition: 'scale-y', duration: 300 }}  
     >
       <Menu.Target>
         <ActionIcon color="dark">
