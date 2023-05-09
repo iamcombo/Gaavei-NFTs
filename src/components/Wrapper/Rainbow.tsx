@@ -1,12 +1,13 @@
 import type { ReactNode } from "react";
 import { publicProvider } from 'wagmi/providers/public';
-import { WagmiConfig, configureChains, createClient, mainnet } from "wagmi";
+import { WagmiConfig, configureChains, createClient } from "wagmi";
+import { bscTestnet } from 'wagmi/chains';
 import { RainbowKitProvider, getDefaultWallets } from "@rainbow-me/rainbowkit";
 import '@rainbow-me/rainbowkit/styles.css';
 
 const Rainbow = ({ children }: { children: ReactNode}) => {
   const { chains, provider } = configureChains(
-    [mainnet],
+    [bscTestnet],
     [
       publicProvider()
     ]

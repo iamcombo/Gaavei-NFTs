@@ -9,31 +9,59 @@ import {
   Divider,
   Grid,
   Group,
-  Image,
   Overlay,
   Space,
   Spoiler,
   Text,
   Title,
 } from '@mantine/core';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import { useWindowScroll } from '@mantine/hooks';
+import { ModalBuy } from '@/components/Modal';
 import { AudioPlayer, ScrollToTop } from '@/components';
+import headerImage from '@/assets/this-is-our-time-cover.jpg';
+import { connectContract } from '@/utils';
+import ABI from '@/constants/ABI.json';
 
 function Editions() {
+  const { query } =  useRouter();
+
   const [scroll, scrollTo] = useWindowScroll();
+  const [modalBuy, setModalBuy] = useState(false);
+  const [metadata, setMetadata] = useState<any | null>(null);
+
+  const getMetadata = async () => {
+    const { Contract } = connectContract('0x0Bf7e70B88ABd4D3C557AD091383415B867E9777', ABI);
+
+    if (!Contract || !query?.id) return;
+    const metadataUri = await Contract.uri(query.id); 
+    
+    const res = await fetch(metadataUri);
+    const data = await res.json();
+    setMetadata(data);
+  };
+  
+  useEffect(() => {
+    getMetadata();
+  }, [query]);
 
   return (
     <>
+      <ModalBuy 
+        modal={modalBuy}
+        setModal={setModalBuy}
+      />
       <AudioPlayer />
       <ScrollToTop {...{ scroll, scrollTo }} />
 
       <Card h={320} p={0} radius={0} sx={{ position: 'relative' }}>
         <Image
           alt="banner"
-          src="https://images.unsplash.com/photo-1502977036036-4ccfe354845f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+          src={headerImage}
           height={320}
-          fit="cover"
-          style={{ position: 'absolute' }}
+          style={{ position: 'absolute', width: '100%', objectFit: 'cover' }}
         />
         <Overlay
           gradient="linear-gradient(145deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 100%)"
@@ -60,14 +88,14 @@ function Editions() {
                 <Group spacing="lg">
                   <Avatar
                     alt=""
-                    src="https://www.sound.xyz/_next/image?url=https%3A%2F%2Fd2i9ybouka0ieh.cloudfront.net%2Fartist-uploads%2F4233e090-a728-489b-8183-158aa3906085%2FRELEASE_COVER_IMAGE%2F5901564-newImage.png&w=384&q=75"
+                    src="https://i.seadn.io/gcs/files/0b0c39b546546cd542f62c64d6325bef.jpg?auto=format&w=1000"
                     radius={16}
                     size={80}
                   />
                   <div>
                     <Badge color="slate.5">Single</Badge>
-                    <Text weight={600}>Xi Li</Text>
-                    <Title weight={800}>Think I am in love with you</Title>
+                    <Text weight={600}>MPJ, David</Text>
+                    <Title weight={800}>{metadata?.name}</Title>
                   </div>
                 </Group>
               </Col>
@@ -80,39 +108,23 @@ function Editions() {
         <Group position="apart">
           <div>
             <Text fw={500}>Price</Text>
-            <Title order={3}>0.008 ETH</Title>
+            <Title order={3}>FREE</Title>
           </div>
-          <Button size="lg" radius={8} px={64} color="dark" variant="outline">
+          <Button 
+            size="lg" 
+            radius={8} 
+            px={64} 
+            color="dark" 
+            variant="outline" 
+            onClick={() => setModalBuy(true)}
+          >
             BUY
           </Button>
         </Group>
         <Divider my={24} />
         <Title order={3}>Description</Title>
         <Spoiler maxHeight={120} showLabel="Show more" hideLabel="Hide" mt={8}>
-          <Text>
-            {`
-              "Think I'm In Love With You" is the first NFT drop from "california
-              love stories," which tells the story of X Li's chance encounter with
-              a girl at an after-party near Melrose Avenue, where they fell in
-              love at first sight.
-              
-              "california love stories" is a collection of love stories set in different 
-              parts of California that capture a range of emotions, including sadness, heartbreak, 
-              joy, tragedy, anger, and longing. These emotions are brought to life through stunning 
-              digital artworks that come in blue, purple, yellow, red, green, and orange, 
-              symbolizing the various emotions explored in the music.
-
-              The project is a live band performance featuring fully handcrafted instruments 
-              that seamlessly blend popular, punk, classic rock, hip-hop, R&B, and electronic 
-              music elements. The project is produced by a team of renowned music producers, 
-              including platinum record producer James Chul Rim, known for his work on over 
-              4 billion streams and TikTok chart-topping single "Wait a Minute!". The project 
-              also features a talented lineup of musicians, including Simone Sello, known for 
-              his work as the lead guitarist for Italian rock icon Vasco Rossi, and Edoardo 
-              Tancredi, a seasoned musician who has performed on Jimmy Kimmel Live and collaborated 
-              with artists like Avril Lavigne and Amelia Moore.
-            `}
-          </Text>
+          <Text>{metadata?.description}</Text>
         </Spoiler>
         <Space h={40} />
         <Title order={3}>Rewards</Title>
@@ -131,7 +143,7 @@ function Editions() {
           <Col sm={12}>
             <Card shadow='sm' radius={16} p={24} withBorder>
               <Image alt='' src='https://www.sound.xyz/_next/image?url=%2Fimages%2Fgolden_egg_icon.png&w=64&q=75' width={40} height={40} />
-              <Text weight={600}>Golden Egg</Text>
+              <Text weight={600}>Royalty</Text>
               <Text>
                 The egg is only revealed after the song sells out. 
                 The winner receives a unique 1/1 NFT chosen by the artist.
@@ -141,7 +153,7 @@ function Editions() {
           <Col sm={12}>
             <Card shadow='sm' radius={16} p={24} withBorder>
               <Image alt='' src='https://www.sound.xyz/_next/image?url=%2Fimages%2Fgolden_egg_icon.png&w=64&q=75' width={40} height={40} />
-              <Text weight={600}>Golden Egg</Text>
+              <Text weight={600}>Claim new release</Text>
               <Text>
                 The egg is only revealed after the song sells out. 
                 The winner receives a unique 1/1 NFT chosen by the artist.
@@ -170,16 +182,18 @@ function Editions() {
 
           <Accordion.Item value="flexibility">
             <Accordion.Control>SONG CONTRACT ADDRESS</Accordion.Control>
-            <Accordion.Panel>0x......</Accordion.Panel>
+            <Accordion.Panel>
+              0x0Bf7e70B88ABd4D3C557AD091383415B867E9777/{query?.id}
+            </Accordion.Panel>
           </Accordion.Item>
 
           <Accordion.Item value="focus-ring">
             <Accordion.Control>BLOCKCHAIN</Accordion.Control>
-            <Accordion.Panel>Ethereum</Accordion.Panel>
+            <Accordion.Panel>Binance Smart Chain</Accordion.Panel>
           </Accordion.Item>
           <Accordion.Item value="focus-rings">
             <Accordion.Control>TOKEN STANDARD</Accordion.Control>
-            <Accordion.Panel>ERC-721</Accordion.Panel>
+            <Accordion.Panel>ERC-1155</Accordion.Panel>
           </Accordion.Item>
           <Accordion.Item value="focus-ringa">
             <Accordion.Control>RESALE ROYALTY</Accordion.Control>

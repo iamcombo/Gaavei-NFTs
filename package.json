@@ -26,6 +26,7 @@
     "next": "13.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "swr": "^2.1.5",
     "wagmi": "^0.12.12"
   },
   "devDependencies": {

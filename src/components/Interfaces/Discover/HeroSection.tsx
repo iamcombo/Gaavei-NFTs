@@ -1,4 +1,4 @@
-import album from '@/assets/album.jpg';
+import album from '@/assets/this-is-our-time-cover.jpg';
 import { Carousel } from '@mantine/carousel';
 import {
   Badge,
@@ -64,8 +64,8 @@ function HeroSection() {
                 <Stack spacing="xl">
                   <div>
                     <Badge color="slate.5">Single</Badge>
-                    <Text weight={600}>CULTURE CODE, ARAYA, RUNN</Text>
-                    <Title weight={800}>THE ACT</Title>
+                    <Text weight={600}>MPJ, DAVID</Text>
+                    <Title weight={800}>THIS IS OUR TIME</Title>
                   </div>
                   <Group spacing={40}>
                     <Text weight={500} color="slate.2">
@@ -107,8 +107,8 @@ function HeroSection() {
                 <Stack spacing="xl">
                   <div>
                     <Badge color="slate.5">Single</Badge>
-                    <Text weight={600}>CULTURE CODE, ARAYA, RUNN</Text>
-                    <Title weight={800}>THE ACT</Title>
+                    <Text weight={600}>MPJ, DAVID</Text>
+                    <Title weight={800}>THIS IS OUR TIME</Title>
                   </div>
                   <Group spacing={40}>
                     <Text weight={500} color="slate.2">

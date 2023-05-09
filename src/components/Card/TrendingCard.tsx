@@ -1,42 +1,58 @@
-import { Badge, Button, Card, Col, Flex, Grid, Group, Image, SimpleGrid, Text } from "@mantine/core";
+import {
+  Badge,
+  Button,
+  Card,
+  Col,
+  Grid,
+  Group,
+  Image,
+  Text,
+} from '@mantine/core';
+import Link from 'next/link';
 
 function TrendingCard() {
   return (
     <Card p={0} radius="md">
       <Card.Section>
         <Image
-          src="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80"
+          src="https://user-images.githubusercontent.com/38589050/237042431-c3a6ad9b-8057-436f-b15b-280ce2c7d460.jpg"
           height={200}
           alt="Norway"
         />
       </Card.Section>
 
       <Group position="apart" mt="md" mb="xs">
-        <Text weight={500}>Norway Fjord Adventures</Text>
+        <Text weight={500}>This is our time</Text>
         <Badge color="pink" variant="light">
           On Sale
         </Badge>
       </Group>
 
       <Text size="sm" color="dimmed" lineClamp={2}>
-        With Fjord Tours you can explore more of the magical fjord landscapes with tours and
-        activities on and around the fjords of Norway
+        នៅចាំដល់ណា ឱខេមរាអើយ វេលានេះហើយ ជាវេលាយើង សាមគ្គីសាងឈ្មោះ
+        សាងយសថ្កុំថ្កើង រួមរស់រុងរឿង យើងខ្មែរតែមួយ បទ &#34នេះគឺវេលាយើង | THIS IS
+        OUR TIME&#34 ផលិតដោយ ក្នុងយុទ្ធនាការ #BeyondTheGames
+        ដើម្បីចូលរួមពោរពេញទៅដោយមោទកភាព នៃភាពជាម្ចាស់ផ្ទះនៃកីឡាស៊ីហ្គេម
+        និងអាស៊ានប៉ារ៉ាហ្គេម ២០២៣ និងចែករំលែក 🫶🏼 ភាសាបេះដូងសម្រាប់កម្ពុជា 🫶🏼
+        ជូនអត្តពលិកគ្រប់ៗរូប។.
       </Text>
 
       <Grid columns={24} align="center">
         <Col span={12}>
-          <Text weight={600}>$63.04</Text>
+          <Text weight={600}>FREE</Text>
         </Col>
         <Col span={12}>
-          <Button
-            fullWidth 
-            variant="outline" 
-            color="slate.8" 
-            radius="md"
-            mt="md" 
-          >
-            BUY
-          </Button>
+          <Link href="/editions/0">
+            <Button
+              fullWidth
+              variant="outline"
+              color="slate.8"
+              radius="md"
+              mt="md"
+            >
+              BUY
+            </Button>
+          </Link>
         </Col>
       </Grid>
     </Card>

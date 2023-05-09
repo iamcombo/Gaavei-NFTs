@@ -21,7 +21,8 @@ const DisplayTrack = ({
   return (
     <>
       <audio
-        src={currentTrack.src} 
+        // src={currentTrack.src} 
+        src="https://gnfd-testnet-sp-1.bnbchain.org/download/gaavei-songs/This-Is-Our-Time.MP3"
         ref={audioRef} 
         onLoadedMetadata={onLoadedMetadata}
       />
@@ -29,13 +30,13 @@ const DisplayTrack = ({
         <Flex gap='md' align='center'>
           <Avatar
             alt=""
-            src="https://www.sound.xyz/_next/image?url=https%3A%2F%2Fd2i9ybouka0ieh.cloudfront.net%2Fartist-uploads%2F4233e090-a728-489b-8183-158aa3906085%2FRELEASE_COVER_IMAGE%2F5901564-newImage.png&w=384&q=75"
+            src="https://i.seadn.io/gcs/files/0b0c39b546546cd542f62c64d6325bef.jpg?auto=format&w=1000"
             radius={16}
             size={80}
           />
           <div>
-            <Text c='dimmed' size={14} weight={600}>Xi Li</Text>
-            <Title w={210} fz={14} truncate order={3}>Think I am in love with you</Title>
+            <Text c='dimmed' size={14} weight={600}>MPJ, David</Text>
+            <Title w={210} fz={14} truncate order={3}>This is our time</Title>
           </div>
         </Flex>
       </div>
