@@ -22,7 +22,7 @@ function NewRelease() {
             artist='Snoop Dogg x GaryVee'
             image='https://i1.sndcdn.com/artworks-z4mdz6T3f4TP-0-t500x500.jpg'
             price='END'
-            tokenId="/static/0"
+            tokenId="static/0"
           />
         </Col>
         <Col sm={12}>
@@ -31,7 +31,7 @@ function NewRelease() {
             artist='Pitbull x Omar Courtz'
             image='https://i1.sndcdn.com/artworks-9Yx9xKxAQRkT-0-t500x500.jpg'
             price='END'
-            tokenId="/static/2"
+            tokenId="static/2"
           />
         </Col>
         <Col sm={12}>
@@ -40,7 +40,7 @@ function NewRelease() {
             artist='OG BOBBY x VannDa'
             image='https://liftedasia.com/assets/blog/bong-copy.webp'
             price='END'
-            tokenId="/static/1"
+            tokenId="static/1"
           />
         </Col>
       </Grid>

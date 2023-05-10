@@ -26,7 +26,7 @@ function TopCollectors() {
         <Box w={840}>
           <Grid columns={24}>
             {collectors.map((I) => 
-              <Col span={4}>
+              <Col span={4} key={I}>
                 <Stack justify="center" align="center" spacing="xs">
                   <Avatar
                     src={`https://api.dicebear.com/6.x/avataaars/svg?seed=${I}`}

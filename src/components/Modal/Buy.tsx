@@ -44,13 +44,15 @@ const Buy = ({ modal, setModal }: IModal) => {
         1,
         { value: ethers.utils.parseEther('0') }
       );
-      console.log(trx);
       toast.promise(trx, {
         loading: 'Loading',
         success: 'Transaction completed',
         error: 'Something went wrong!',
       });
+      setModal(false);
     } catch (err: any) {
+      console.log(err);
+      setModal(false);
       // toast.error(err.error);
     }
   };

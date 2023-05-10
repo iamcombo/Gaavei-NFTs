@@ -26,7 +26,7 @@ function Trending() {
             image='https://i.ytimg.com/vi/VLqaZeQvxzI/maxresdefault.jpg'
             title='Snoop Dogg x GaryVee - Please Take a Step Back'
             description=''
-            tokenId='/static/0'
+            tokenId='static/0'
             isEnd
           />
         </Col>
@@ -35,7 +35,7 @@ function Trending() {
             image='https://i.ytimg.com/vi/5ykFSOdqSC4/maxresdefault.jpg'
             title='OG BOBBY x BONG Feat. VannDa'
             description=''
-            tokenId='/static/1'
+            tokenId='static/1'
             isEnd
           />
         </Col>
@@ -44,7 +44,7 @@ function Trending() {
             image='https://i.ytimg.com/vi/IhI5MdPX5uU/maxresdefault.jpg'
             title='Pitbull x Omar Courtz - Me Pone Mal'
             description=''
-            tokenId='/static/2'
+            tokenId='static/2'
             isEnd
           />
         </Col>

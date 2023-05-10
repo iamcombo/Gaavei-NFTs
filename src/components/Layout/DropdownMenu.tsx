@@ -43,7 +43,7 @@ function DropdownMenu() {
             </>
           )}
           {!address && (
-            <Link href='signIn'>
+            <Link href='/signIn'>
               <Button 
                 compact 
                 variant="subtle" 
