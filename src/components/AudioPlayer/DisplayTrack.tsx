@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { Avatar, Flex, Group, SimpleGrid, Text, Title } from "@mantine/core";
+import { Avatar, Flex, Text, Title } from "@mantine/core";
 
 /* eslint-disable jsx-a11y/media-has-caption */
 const DisplayTrack = ({
-  currentTrack,
+  // currentTrack,
   setDuration,
   audioRef,
   progressBarRef,

@@ -7,8 +7,12 @@ import {
   ThemeIcon,
   Title,
 } from '@mantine/core';
-import { IconCloudDownload, IconGuitarPick, IconReceiptTax, IconToolsKitchen2 } from '@tabler/icons-react';
-import Image from 'next/image';
+import { 
+  IconCloudDownload, 
+  IconGuitarPick, 
+  IconReceiptTax, 
+  IconToolsKitchen2 
+} from '@tabler/icons-react';
 
 const Reward = () => {
   return (
