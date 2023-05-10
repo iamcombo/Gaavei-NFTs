@@ -4,8 +4,10 @@ import {
   Grid,
   Spoiler,
   Text,
+  ThemeIcon,
   Title,
 } from '@mantine/core';
+import { IconCloudDownload, IconGuitarPick, IconReceiptTax, IconToolsKitchen2 } from '@tabler/icons-react';
 import Image from 'next/image';
 
 const Reward = () => {
@@ -18,12 +20,9 @@ const Reward = () => {
       <Grid columns={24}>
         <Col sm={12}>
           <Card shadow="sm" radius={16} p={24} withBorder sx={{ height: '100%' }}>
-            <Image
-              alt=""
-              src="https://www.sound.xyz/_next/image?url=%2Fimages%2Fgolden_egg_icon.png&w=64&q=75"
-              width={40}
-              height={40}
-            />
+            <ThemeIcon size={40} variant='light' radius={8} mb={8}>
+              <IconCloudDownload />
+            </ThemeIcon>
             <Text weight={600}>Audio Download</Text>
             <Text>
               Collectors can download the uncompressed lossless audio file for
@@ -33,27 +32,20 @@ const Reward = () => {
         </Col>
         <Col sm={12}>
           <Card shadow="sm" radius={16} p={24} withBorder sx={{ height: '100%' }}>
-            <Image
-              alt=""
-              src="https://www.sound.xyz/_next/image?url=%2Fimages%2Fgolden_egg_icon.png&w=64&q=75"
-              width={40}
-              height={40}
-            />
+            <ThemeIcon size={40} variant='light' radius={8} mb={8}>
+              <IconReceiptTax />
+            </ThemeIcon>
             <Text weight={600}>Royalty</Text>
             <Text>
-              The egg is only revealed after the song sells out. The winner
-              receives a unique 1/1 NFT chosen by the artist.
+              By owning the assets, you will earn some rewards in many ways.
             </Text>
           </Card>
         </Col>
         <Col sm={12}>
           <Card shadow="sm" radius={16} p={24} withBorder sx={{ height: '100%' }}>
-            <Image
-              alt=""
-              src="https://www.sound.xyz/_next/image?url=%2Fimages%2Fgolden_egg_icon.png&w=64&q=75"
-              width={40}
-              height={40}
-            />
+            <ThemeIcon size={40} variant='light' radius={8} mb={8}>
+              <IconGuitarPick />
+            </ThemeIcon>
             <Text weight={600}>Acoustic Cover</Text>
             <Spoiler maxHeight={80} showLabel="Show more" hideLabel="Hide">
               <Text>
@@ -67,12 +59,9 @@ const Reward = () => {
         </Col>
         <Col sm={12}>
           <Card shadow="sm" radius={16} p={24} withBorder sx={{ height: '100%' }}>
-            <Image
-              alt=""
-              src="https://www.sound.xyz/_next/image?url=%2Fimages%2Fgolden_egg_icon.png&w=64&q=75"
-              width={40}
-              height={40}
-            />
+            <ThemeIcon size={40} variant='light' radius={8} mb={8}>
+              <IconToolsKitchen2 />
+            </ThemeIcon>
             <Text weight={600}>Dinner Meetup</Text>
             <Text>
               Winner has the choice to schedule a dinner with artist or a party.

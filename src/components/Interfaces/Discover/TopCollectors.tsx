@@ -12,6 +12,10 @@ import {
 } from '@mantine/core';
 import { IconArrowRight } from '@tabler/icons-react';
 
+const collectors = [
+  'John', 'Jane', 'Janny', 'Lisa', 'Jungkook', 'Nattie'
+];
+
 function TopCollectors() {
   return (
     <div>
@@ -21,96 +25,23 @@ function TopCollectors() {
       <ScrollArea maw={840} h={150}>
         <Box w={840}>
           <Grid columns={24}>
-            <Col span={4}>
-              <Stack justify="center" align="center" spacing="xs">
-                <Avatar
-                  src="https://royal-io.imgix.net/3a153bb6-ecf2-4827-994d-0cfdb02343ab.png"
-                  radius="xl"
-                  size="xl"
-                />
-                <div>
-                  <Text weight={500}>Craig</Text>
-                  <Text weight="lighter" size="xs">
-                    @C7D
-                  </Text>
-                </div>
-              </Stack>
-            </Col>
-            <Col span={4}>
-              <Stack justify="center" align="center" spacing="xs">
-                <Avatar
-                  src="https://royal-io.imgix.net/3a153bb6-ecf2-4827-994d-0cfdb02343ab.png"
-                  radius="xl"
-                  size="xl"
-                />
-                <div>
-                  <Text weight={500}>Craig</Text>
-                  <Text weight="lighter" size="xs">
-                    @C7D
-                  </Text>
-                </div>
-              </Stack>
-            </Col>
-            <Col span={4}>
-              <Stack justify="center" align="center" spacing="xs">
-                <Avatar
-                  src="https://royal-io.imgix.net/3a153bb6-ecf2-4827-994d-0cfdb02343ab.png"
-                  radius="xl"
-                  size="xl"
-                />
-                <div>
-                  <Text weight={500}>Craig</Text>
-                  <Text weight="lighter" size="xs">
-                    @C7D
-                  </Text>
-                </div>
-              </Stack>
-            </Col>
-            <Col span={4}>
-              <Stack justify="center" align="center" spacing="xs">
-                <Avatar
-                  src="https://royal-io.imgix.net/3a153bb6-ecf2-4827-994d-0cfdb02343ab.png"
-                  radius="xl"
-                  size="xl"
-                />
-                <div>
-                  <Text weight={500}>Craig</Text>
-                  <Text weight="lighter" size="xs">
-                    @C7D
-                  </Text>
-                </div>
-              </Stack>
-            </Col>
-            <Col span={4}>
-              <Stack justify="center" align="center" spacing="xs">
-                <Avatar
-                  src="https://royal-io.imgix.net/3a153bb6-ecf2-4827-994d-0cfdb02343ab.png"
-                  radius="xl"
-                  size="xl"
-                />
-                <div>
-                  <Text weight={500}>Craig</Text>
-                  <Text weight="lighter" size="xs">
-                    @C7D
-                  </Text>
-                </div>
-              </Stack>
-            </Col>
-            <Col span={4}>
-              <Stack justify="center" align="center" spacing="xs">
-                <Avatar
-                  src="https://royal-io.imgix.net/3a153bb6-ecf2-4827-994d-0cfdb02343ab.png"
-                  radius="xl"
-                  size="xl"
-                />
-                <div>
-                  <Text weight={500}>Craig</Text>
-                  <Text weight="lighter" size="xs">
-                    @C7D
-                  </Text>
-                </div>
-              </Stack>
-            </Col>
+            {collectors.map((I) => 
+              <Col span={4}>
+                <Stack justify="center" align="center" spacing="xs">
+                  <Avatar
+                    src={`https://api.dicebear.com/6.x/thumbs/svg?seed=${I}`}
+                    radius={999}
+                    size="xl"
+                  />
+                  <div>
+                    <Text weight={500}>{I}</Text>
+                    <Text weight="lighter" size="xs">
+                      @{I}
+                    </Text>
+                  </div>
+                </Stack>
+              </Col>
+            )}
           </Grid>
         </Box>
       </ScrollArea>
