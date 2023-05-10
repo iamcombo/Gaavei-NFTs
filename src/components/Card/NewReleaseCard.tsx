@@ -1,4 +1,4 @@
-import { Col, Flex, Grid, Group, Image, Text } from "@mantine/core";
+import { Col, Grid, Group, Image, Text } from "@mantine/core";
 import Link from "next/link";
 
 interface INewReleaseCard {
@@ -6,6 +6,7 @@ interface INewReleaseCard {
   artist: string;
   image: string;
   price: string;
+  tokenId: string;
 }
 
 function NewReleaseCard({
@@ -13,9 +14,10 @@ function NewReleaseCard({
   artist,
   image,
   price,
+  tokenId,
 }: INewReleaseCard) {
   return (
-    <Link href='/editions/0'>
+    <Link href={`/editions/${tokenId}`}>
       <Grid columns={24} gutter={2} align="center" justify="space-between">
         <Col span={18}>
           <Grid columns={24}>

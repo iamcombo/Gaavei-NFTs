@@ -6,7 +6,7 @@ const ScrollToTop = ({
   scrollTo
 }: any) => {
   return (
-    <Affix position={{ bottom: rem(20), left: rem(20) }}>
+    <Affix position={{ bottom: rem(40), left: rem(20) }}>
       <Transition transition="slide-up" mounted={scroll.y > 0}>
         {(transitionStyles) => (
           <Button

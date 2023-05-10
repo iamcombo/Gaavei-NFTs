@@ -13,30 +13,34 @@ const LocalRelease = () => {
             artist='MPJ, DAVID'
             image='https://i.seadn.io/gcs/files/0b0c39b546546cd542f62c64d6325bef.jpg?auto=format&w=1000'
             price='Airdrop'
+            tokenId="0"
           />
         </Col>
         <Col sm={12}>
           <NewReleaseCard
-            title='Vanthan x VannDa - កម្លោះស្រុកខ្មែរ'
+            title='កម្លោះស្រុកខ្មែរ'
             artist="Vanthan, VannDa"
             image='https://d24jnm9llkb1ub.cloudfront.net/icpn/197338796542/197338796542-cover-zoom.jpg'
             price='0.0089 BNB'  
+            tokenId="/static/3"
           />
         </Col>
         <Col sm={12}>
           <NewReleaseCard 
-            title='Khemarak Sereymun - Welcome to Angkor'
+            title='Welcome to Angkor'
             artist="Khemarak Sereymun"
             image='https://i.ytimg.com/vi/CsGeVlE6c_Q/maxresdefault.jpg'
             price='0.0098 BNB'
+            tokenId="/static/4"
           />
         </Col>
         <Col sm={12}>
           <NewReleaseCard 
-            title='G-Devith - មហានគរ (यशोधरपुर Yaśōdharapura)'
+            title='មហានគរ (यशोधरपुर Yaśōdharapura)'
             artist="G-Devith"
             image='https://troryorng.com/wp-content/uploads/2023/05/344864935_187820670862057_8842261264901749954_n-1024x1024.jpg'
             price='0.0099 BNB'
+            tokenId="/static/5"
           />
         </Col>
       </Grid>

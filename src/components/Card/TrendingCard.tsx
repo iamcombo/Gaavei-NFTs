@@ -28,11 +28,13 @@ function TrendingCard({
   return (
     <Card p={0} radius="md">
       <Card.Section>
-        <Image
-          src={image}
-          height={200}
-          alt="Norway"
-        />
+        <Link href={`/editions/${tokenId}`}>
+          <Image
+            src={image}
+            height={200}
+            alt="Norway"
+          />
+        </Link>
       </Card.Section>
 
       <Group position="apart" mt="md" mb="xs">
