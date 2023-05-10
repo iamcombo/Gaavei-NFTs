@@ -1,5 +1,5 @@
-import { Affix, Button, Transition, rem } from "@mantine/core";
 import { IconArrowUp } from "@tabler/icons-react";
+import { Affix, Button, Transition, rem } from "@mantine/core";
 
 const ScrollToTop = ({
   scroll,
