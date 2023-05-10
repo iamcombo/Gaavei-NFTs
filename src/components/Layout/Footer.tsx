@@ -5,7 +5,7 @@ function Footer() {
     <Container size={1280} py={40}>
       <Grid columns={24} gutter={32}>
         <Col md={6}>
-          <Title order={4}>ROYAL.</Title>
+          <Title order={4}>GAAVEI.</Title>
         </Col>
         <Col md={6}>
           <SimpleGrid cols={1} spacing={8}>

@@ -31,7 +31,7 @@ function HeaderComponent() {
             <Group>
               <Link href="/">
                 <Title order={3} mr={16}>
-                  ROYAL.
+                  GAAVEI.
                 </Title>
               </Link>
               {/* <Text weight={500}>Discover</Text>

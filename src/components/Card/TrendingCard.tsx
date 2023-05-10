@@ -37,19 +37,23 @@ function TrendingCard({
         </Link>
       </Card.Section>
 
-      <Group position="apart" mt="md" mb="xs">
-        <Text weight={500}>{title}</Text>
-        {isEnd && (
-          <Badge color="red" variant="light">
-            End
-          </Badge>
-        )}
-        {!isEnd && (
-          <Badge color="pink" variant="light">
-            On Sale
-          </Badge>
-        )}    
-      </Group>
+      <Grid columns={24} mt="md" mb="xs">
+        <Col span={20}>
+          <Text weight={500}>{title}</Text>
+        </Col>
+        <Col span={4}>
+          {isEnd && (
+            <Badge color="red" variant="light">
+              End
+            </Badge>
+          )}
+          {!isEnd && (
+            <Badge color="green" variant="light">
+              On Sale
+            </Badge>
+          )}    
+        </Col>
+      </Grid>
 
       <Text size="sm" color="dimmed" lineClamp={2}>
         {description}

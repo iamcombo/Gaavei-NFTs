@@ -29,7 +29,7 @@ function TopCollectors() {
               <Col span={4}>
                 <Stack justify="center" align="center" spacing="xs">
                   <Avatar
-                    src={`https://api.dicebear.com/6.x/thumbs/svg?seed=${I}`}
+                    src={`https://api.dicebear.com/6.x/avataaars/svg?seed=${I}`}
                     radius={999}
                     size="xl"
                   />

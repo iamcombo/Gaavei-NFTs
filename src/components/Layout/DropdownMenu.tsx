@@ -1,6 +1,6 @@
 import { useAccount } from "wagmi";
-import { ActionIcon, Avatar, Divider, Group, Menu, Stack, Text, Title } from "@mantine/core";
-import { IconCaretDown, IconLogout, IconReceiptTax, IconUser } from "@tabler/icons-react";
+import { ActionIcon, Avatar, Button, Divider, Group, Menu, Stack, Text, Title } from "@mantine/core";
+import { IconCaretDown, IconLogout, IconReceiptTax, IconUser, IconWallet } from "@tabler/icons-react";
 import { shortenAddress } from "@/utils";
 import { useAuth } from "@/contexts/authContext";
 import Link from "next/link";
@@ -36,8 +36,26 @@ function DropdownMenu() {
         </Link>
         <Divider my={8} />
         <Stack spacing={4} px={10}>
-          <Title order={6}>0 ETH</Title>
-          <Text c='dimmed' fz={14}>Wallet balance</Text>
+          {address && (
+            <>
+              <Title order={6}>0 ETH</Title>
+              <Text c='dimmed' fz={14}>Wallet balance</Text>
+            </>
+          )}
+          {!address && (
+            <Link href='signIn'>
+              <Button 
+                compact 
+                variant="subtle" 
+                fw={500} 
+                color="dark" 
+                leftIcon={<IconWallet size={14} />}
+                radius={8}
+              >
+                Connect wallet
+              </Button>
+            </Link>
+          )}
         </Stack>
         <Divider my={8} />
         <Link href='/profile'>

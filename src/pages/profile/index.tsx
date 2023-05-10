@@ -66,16 +66,18 @@ const Profile = () => {
               <Col span={18}>
                 <div>
                   <Badge color="slate.5">Single</Badge>
-                  <Flex>
-                    <Text weight={ 600} truncate>{useIsClient() ? address : ''}</Text>
-                    <CopyButton value={address as string}>
-                      {({ copied, copy }) => (
-                        <ActionIcon color={copied ? 'teal' : 'blue'} onClick={copy}>
-                          <IconCopy />
-                        </ActionIcon>
-                      )}
-                    </CopyButton>
-                  </Flex>
+                  {(useIsClient() && address) && (
+                    <Flex>
+                      <Text weight={600} truncate>{address}</Text>
+                      <CopyButton value={address as string}>
+                        {({ copied, copy }) => (
+                          <ActionIcon color={copied ? 'teal' : 'blue'} onClick={copy}>
+                            <IconCopy />
+                          </ActionIcon>
+                        )}
+                      </CopyButton>
+                    </Flex>
+                  )}
                   <Title weight={800}>{user?.name}</Title>
                 </div>
               </Col>
