@@ -71,14 +71,14 @@ const Buy = ({ modal, setModal }: IModal) => {
         <Group>
           <Image
             alt=""
-            src="https://www.sound.xyz/_next/image?url=https%3A%2F%2Fd2i9ybouka0ieh.cloudfront.net%2Fartist-uploads%2F4233e090-a728-489b-8183-158aa3906085%2FRELEASE_COVER_IMAGE%2F5901564-newImage.png&w=64&q=75"
+            src="https://i.seadn.io/gcs/files/0b0c39b546546cd542f62c64d6325bef.jpg?auto=format&w=1000"
             width={60}
             height={60}
             radius={8}
           />
           <div>
-            <Text>X Li</Text>
-            <Text>Think I am in love with you</Text>
+            <Text>MPJ, DAVID</Text>
+            <Text>THIS IS OUR TIME</Text>
           </div>
         </Group>
         <Space h={24} />
