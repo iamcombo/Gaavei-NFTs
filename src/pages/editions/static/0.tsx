@@ -1,5 +1,5 @@
 import { ScrollToTop } from "@/components";
-import { ContractDetail, HeroSection, Reward } from "@/components/Interfaces/Editions";
+import { ContractDetail, Description, HeroSection, Reward } from "@/components/Interfaces/Editions";
 import { Button, Container, Divider, Group, Space, Text, Title } from "@mantine/core";
 import { useWindowScroll } from "@mantine/hooks";
 
@@ -35,14 +35,7 @@ const Static0 = () => {
         </Group>
 
         <Divider my={24} />
-
-        <Title order={3}>Description</Title>
-        {/* <Spoiler maxHeight={120} showLabel="Show more" hideLabel="Hide" mt={8}>
-          <Text>
-          Every time I say 'patience' in my content, that's saying to take a step back.”
-          In related news, Snoop announced back in April that he is hitting ...
-          </Text>
-        </Spoiler> */}
+        <Description description="" />
 
         <Space h={40} />
         <Reward />

@@ -1,4 +1,3 @@
-import { useAuth } from '@/contexts';
 import {
   ActionIcon,
   Avatar,
@@ -19,13 +18,14 @@ import {
 import { useAccount } from 'wagmi';
 import { IconCopy } from '@tabler/icons-react';
 import useIsClient from '@/hooks/useIsClient';
+import { useAuth } from '@/contexts';
 
 const Profile = () => {
-  const { address } = useAccount();
   const { user } = useAuth();
+  const { address } = useAccount();
 
   return (
-    <div>
+    <>
       <Card h={240} p={0} radius={0} sx={{ position: 'relative' }}>
         <Image
           alt="banner"
@@ -102,7 +102,7 @@ const Profile = () => {
           </Group>
         </Card>
       </Container>
-    </div>
+    </>
   );
 };
 

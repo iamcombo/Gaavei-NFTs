@@ -2,6 +2,10 @@
   "name": "0xbet",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "combo",
+    "url": "https://github.com/iamcombo"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

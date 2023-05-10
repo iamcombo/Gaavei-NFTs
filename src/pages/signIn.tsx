@@ -1,8 +1,13 @@
-import { useAuth } from '@/contexts/authContext';
-import { Button, Container, Space, Stack, Title } from '@mantine/core';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { useGoogleLogin } from '@react-oauth/google';
+import { 
+  Button, 
+  Container, 
+  Stack, 
+  Title 
+} from '@mantine/core';
 import { useRouter } from 'next/router';
+import { useGoogleLogin } from '@react-oauth/google';
+import { CustomConnectButton } from '@/components';
+import { useAuth } from '@/contexts';
 
 const Signin = () => {
   const { push } = useRouter();
@@ -28,95 +33,11 @@ const Signin = () => {
   return (
     <Container size={420} py={48}>
       <Title order={2} align="center">
-        ROYAL.
+        GAAVEI.
       </Title>
-      <Space h={32} />
-      <Stack justify="center">
-        <ConnectButton.Custom>
-          {({
-            account,
-            chain,
-            openAccountModal,
-            openChainModal,
-            openConnectModal,
-            authenticationStatus,
-            mounted,
-          }) => {
-            // Note: If your app doesn't use authentication, you
-            // can remove all 'authenticationStatus' checks
-            const ready = mounted && authenticationStatus !== 'loading';
-            const connected =
-              ready &&
-              account &&
-              chain &&
-              (!authenticationStatus ||
-                authenticationStatus === 'authenticated');
 
-            return (
-              <div
-                {...(!ready && {
-                  'aria-hidden': true,
-                  style: {
-                    opacity: 0,
-                    pointerEvents: 'none',
-                    userSelect: 'none',
-                  },
-                })}
-              >
-                {(() => {
-                  if (!connected) {
-                    return (
-                      <Button
-                        fullWidth
-                        color="dark"
-                        size="md"
-                        radius={8}
-                        px={32}
-                        onClick={openConnectModal}
-                        type="button"
-                      >
-                        Connect Wallet
-                      </Button>
-                    );
-                  }
-
-                  if (chain.unsupported) {
-                    return (
-                      <Button
-                        fullWidth
-                        color="dark"
-                        size="md"
-                        radius={8}
-                        px={32}
-                        onClick={openChainModal}
-                        type="button"
-                      >
-                        Wrong network
-                      </Button>
-                    );
-                  }
-
-                  return (
-                    <Button
-                      fullWidth
-                      color="dark"
-                      size="md"
-                      radius={8}
-                      px={32}
-                      onClick={openAccountModal}
-                      type="button"
-                    >
-                      {account.displayName}
-                      {account.displayBalance
-                        ? ` (${account.displayBalance})`
-                        : ''}
-                    </Button>
-                  );
-                })()}
-              </div>
-            );
-          }}
-        </ConnectButton.Custom>
+      <Stack mt={32} justify="center">
+        <CustomConnectButton />
         <Button
           fullWidth
           variant="outline"

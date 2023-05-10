@@ -1,19 +1,18 @@
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import { useWindowScroll } from '@mantine/hooks';
 import {
-  Anchor,
   Button,
   Container,
   Divider,
   Group,
   Space,
-  Spoiler,
   Text,
   Title,
 } from '@mantine/core';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { useWindowScroll } from '@mantine/hooks';
 import {
   ContractDetail,
+  Description,
   HeroSection,
   Reward,
 } from '@/components/Interfaces/Editions';
@@ -21,7 +20,6 @@ import { ModalBuy } from '@/components/Modal';
 import { AudioPlayer, ScrollToTop } from '@/components';
 import { connectContract } from '@/utils';
 import ABI from '@/constants/ABI.json';
-import Linkify from 'linkify-react';
 
 function Editions() {
   const { query } = useRouter();
@@ -47,11 +45,6 @@ function Editions() {
   useEffect(() => {
     getMetadata();
   }, [query]);
-
-  const renderLink = ({ attributes, content }: any) => {
-    const { href, ...props } = attributes;
-    return <Anchor href={href} target="_blank">{content}</Anchor>;
-  };
 
   return (
     <>
@@ -86,16 +79,9 @@ function Editions() {
 
         <Divider my={24} />
 
-        <Title order={3}>Description</Title>
-        <Spoiler maxHeight={120} showLabel="Show more" hideLabel="Hide" mt={8}>
-          <Linkify options={{ render: renderLink }}>
-            <Text style={{whiteSpace: "pre-wrap"}}>{metadata?.description}</Text>
-          </Linkify>
-        </Spoiler>
-
+        <Description description={metadata?.description} />
         <Space h={40} />
         <Reward />
-
         <Space h={40} />
         <ContractDetail
           blockchain="Binance Smart Chain"
