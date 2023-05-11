@@ -8,7 +8,7 @@ import { useAccount } from "wagmi";
 import type { IStake } from "./type";
 import { ModalConfirmation } from ".";
 
-const Stake = ({ modal }: IStake) => {
+const Stake = ({ modal, operation }: IStake) => {
   const { address } = useAccount();
   const modalConfirm = useToggle();
   const [amount, setAmount] = useState('');
@@ -54,6 +54,27 @@ const Stake = ({ modal }: IStake) => {
     }
   };
 
+  const handleUnstake = async () => {
+    try {
+      const { Contract } = connectContract(
+        ADDRESS.STAKING,
+        ABI.STAKING
+      );
+  
+      if (!Contract) return;
+      const trx = Contract.unstakeNFT('0', amount);
+      toast.promise(trx, {
+        loading: 'Loading',
+        success: 'Transaction completed',
+        error: 'Something went wrong!',
+      });
+      modalConfirm.toggleOff();
+    } catch (error) {
+      modalConfirm.toggleOff();
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <Modal
@@ -65,7 +86,7 @@ const Stake = ({ modal }: IStake) => {
         transitionProps={{ transition: 'slide-up', duration: 400 }}
         centered
       >
-        <Title order={3}>Stake Amount</Title>
+        <Title order={3}>{operation === 'Stake' ? 'Stake' : 'Unstake'} Amount</Title>
         <Text mt={4} c='dimmed'>Enter amount you would like to stake.</Text>
         <TextInput
           label='Amount'
@@ -77,12 +98,12 @@ const Stake = ({ modal }: IStake) => {
           onChange={(e) => setAmount(e.target.value)}
         />
         <Button fullWidth size="md" color="dark" radius={8} mt={16} onClick={openConfirmModal}>
-          Stake
+          {operation === 'Stake' ? 'Stake' : 'Unstake'}
         </Button>
       </Modal>
     
       <ModalConfirmation
-        callbackFn={handleStake}
+        callbackFn={operation === 'Stake' ? handleStake : handleUnstake}
         modal={modalConfirm.isOn}
         setModal={modalConfirm.toggle}
       />

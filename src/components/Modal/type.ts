@@ -15,5 +15,6 @@ export interface IConfirm extends IModal {
 }
 
 export interface IStake {
-  modal: IToggle
+  modal: IToggle;
+  operation: "Stake" | "Unstake"
 }
