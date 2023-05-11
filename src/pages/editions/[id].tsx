@@ -20,15 +20,22 @@ import { ModalBuy } from '@/components/Modal';
 import { AudioPlayer, ScrollToTop } from '@/components';
 import { connectContract } from '@/utils';
 import { ABI, ADDRESS } from '@/constants/CONTRACT';
-import { useContractRead } from 'wagmi';
+import { useAccount, useContractRead } from 'wagmi';
 
 function Editions() {
+  const { address } = useAccount();
   const { query } = useRouter();
   const { data: claimRestrictions }: any = useContractRead({
     address: ADDRESS.COLLECTION as `0x${string}`,
     abi: ABI.COLLECTION,
     functionName: 'claimRestrictions',
     args: [0],
+  });
+  const { data: getSupplyClaimedByWallet }: any = useContractRead({
+    address: ADDRESS.COLLECTION as `0x${string}`,
+    abi: ABI.COLLECTION,
+    functionName: 'getSupplyClaimedByWallet',
+    args: [0, address],
   });
 
   const [scroll, scrollTo] = useWindowScroll();
@@ -81,16 +88,24 @@ function Editions() {
               / {claimRestrictions?. maxSupply.toString()}
             </Title>
           </div>
-          <Button
-            size="lg"
-            radius={8}
-            px={64}
-            color="dark"
-            variant="outline"
-            onClick={() => setModalBuy(true)}
-          >
-            BUY
-          </Button>
+          <div>
+            <Button
+              size="lg"
+              radius={8}
+              px={64}
+              color="dark"
+              variant="outline"
+              onClick={() => setModalBuy(true)}
+              mb={8}
+            >
+              BUY
+            </Button>
+            <Text fw={500}>Total claim</Text>
+            <Title order={3}>
+              {getSupplyClaimedByWallet?.toString()}
+              / {claimRestrictions?. quantityLimit.toString()}
+            </Title>
+          </div>
         </Group>
 
         <Divider my={24} />
