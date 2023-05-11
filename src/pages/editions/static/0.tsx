@@ -30,7 +30,7 @@ const Static0 = () => {
             color="dark"
             variant="outline"
           >
-            END
+            Coming soon..
           </Button>
         </Group>
 

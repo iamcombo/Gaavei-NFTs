@@ -109,7 +109,7 @@ const Buy = ({ modal, setModal }: IModal) => {
           <Group spacing={5}>
             <ActionIcon
               variant="default"
-              onClick={() => handlers.current.decrement()}
+              // onClick={() => handlers.current.decrement()}
             >
               <IconMinus size={14} stroke={1.5} />
             </ActionIcon>
@@ -124,13 +124,13 @@ const Buy = ({ modal, setModal }: IModal) => {
               step={2}
               styles={{ input: { width: rem(54), textAlign: 'center' } }}
               variant="unstyled"
-              disabled
+              // disabled
             />
 
             <ActionIcon
               size={24}
               variant="default"
-              onClick={() => handlers.current.increment()}
+              // onClick={() => handlers.current.increment()}
             >
               <IconPlus size={14} stroke={1.5} />
             </ActionIcon>

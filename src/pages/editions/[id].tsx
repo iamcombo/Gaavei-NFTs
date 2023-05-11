@@ -20,9 +20,16 @@ import { ModalBuy } from '@/components/Modal';
 import { AudioPlayer, ScrollToTop } from '@/components';
 import { connectContract } from '@/utils';
 import { ABI, ADDRESS } from '@/constants/CONTRACT';
+import { useContractRead } from 'wagmi';
 
 function Editions() {
   const { query } = useRouter();
+  const { data: claimRestrictions }: any = useContractRead({
+    address: ADDRESS.COLLECTION as `0x${string}`,
+    abi: ABI.COLLECTION,
+    functionName: 'claimRestrictions',
+    args: [0],
+  });
 
   const [scroll, scrollTo] = useWindowScroll();
   const [modalBuy, setModalBuy] = useState(false);
@@ -64,10 +71,15 @@ function Editions() {
       />
 
       <Container size={840} my={40}>
-        <Group position="apart">
+        <Group position="apart" align='start'>
           <div>
             <Text fw={500}>Price</Text>
             <Title order={3}>FREE</Title>
+            <Text fw={500}>Max supply</Text>
+            <Title order={3}>
+              {claimRestrictions?.supplyClaimed.toString()}
+              / {claimRestrictions?. maxSupply.toString()}
+            </Title>
           </div>
           <Button
             size="lg"
