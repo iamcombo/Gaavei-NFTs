@@ -1,12 +1,12 @@
-import AuthProvider from '@/contexts/authContext';
-import { MantineProvider } from '@mantine/core';
-import { GoogleOAuthProvider } from '@react-oauth/google';
 import { Raleway } from 'next/font/google';
+import { MantineProvider } from '@mantine/core';
+import { Notifications } from '@mantine/notifications';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import AuthProvider from '@/contexts/authContext';
 import type { CSSProperties, ReactNode } from 'react';
-import { Toaster } from 'react-hot-toast';
+import Rainbow from './Rainbow';
 import AppLayout from '../Layout/AppLayout';
 import { RouterTransition } from '../PageRoute/RouterTransition';
-import Rainbow from './Rainbow';
 
 const raleway: unknown = Raleway({
   subsets: ['latin'],
@@ -41,7 +41,7 @@ function AppWrapper({ children }: { children: ReactNode }) {
         }}
       >
         <RouterTransition />
-        <Toaster />
+        <Notifications position="top-right" />
         <AuthProvider>
           <AppLayout>
             <GoogleOAuthProvider

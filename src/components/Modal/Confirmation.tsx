@@ -12,7 +12,7 @@ import Image from 'next/image';
 import confirm from '@/assets/confirmation.svg';
 import type { IConfirm } from './type';
 
-const Confirmation = ({ modal, setModal, callbackFn }: IConfirm) => {
+const Confirmation = ({ modal, setModal, callbackFn, status }: IConfirm) => {
   return (
     <Modal
       opened={modal}
@@ -23,7 +23,7 @@ const Confirmation = ({ modal, setModal, callbackFn }: IConfirm) => {
       transitionProps={{ transition: 'slide-up', duration: 400 }}
       centered
     >
-      <Grid columns={24} gutterSm={24} align='center'>
+      <Grid columns={24} gutterSm={24} align="center">
         <Col sm={8}>
           <Card sx={{ position: 'relative', height: '120px' }}>
             <Image alt="" src={confirm} fill />
@@ -31,7 +31,9 @@ const Confirmation = ({ modal, setModal, callbackFn }: IConfirm) => {
         </Col>
         <Col sm={16}>
           <Title order={3}>Confirmation</Title>
-          <Text c='dimmed'>Are you sure you want to proceed? You can undo this action.</Text>
+          <Text c="dimmed">
+            Are you sure you want to proceed? You can undo this action.
+          </Text>
           <SimpleGrid cols={2} mt={24}>
             <Button
               size="md"
@@ -42,7 +44,13 @@ const Confirmation = ({ modal, setModal, callbackFn }: IConfirm) => {
             >
               Cancel
             </Button>
-            <Button size="md" radius={8} color="dark" onClick={callbackFn}>
+            <Button
+              size="md"
+              radius={8}
+              color="dark"
+              loading={status === 'pending'}
+              onClick={callbackFn}
+            >
               Confirm
             </Button>
           </SimpleGrid>

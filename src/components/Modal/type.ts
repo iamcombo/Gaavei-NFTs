@@ -12,6 +12,7 @@ export interface IToggle {
 
 export interface IConfirm extends IModal {
   callbackFn: () => void;
+  status?: 'idle' | 'pending' | 'success' | 'error';
 }
 
 export interface IStake {

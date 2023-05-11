@@ -1,16 +1,23 @@
+import { 
+  Button, 
+  Modal, 
+  Text, 
+  TextInput, 
+  Title, 
+} from "@mantine/core";
 import { useState } from "react";
-import { Button, Modal, Text, TextInput, Title } from "@mantine/core";
+import { useAccount } from "wagmi";
+import useAsync from "@/hooks/useAsync";
 import { useToggle } from "@/hooks/useToggle";
-import { toast } from "react-hot-toast";
 import { connectContract } from "@/utils";
 import { ABI, ADDRESS } from "@/constants/CONTRACT";
-import { useAccount } from "wagmi";
-import type { IStake } from "./type";
+import { notifications } from "@mantine/notifications";
 import { ModalConfirmation } from ".";
+import type { IStake } from "./type";
 
 const Stake = ({ modal, operation }: IStake) => {
-  const { address } = useAccount();
   const modalConfirm = useToggle();
+  const { address } = useAccount();
   const [amount, setAmount] = useState('');
 
   const openConfirmModal = () => {
@@ -19,61 +26,69 @@ const Stake = ({ modal, operation }: IStake) => {
   };
 
   const handleStake = async () => {
-    try {
-      const { Contract: nftContract } = connectContract(
-        ADDRESS.COLLECTION,
-        ABI.COLLECTION
-      );
+    const { Contract: nftContract } = connectContract(
+      ADDRESS.COLLECTION,
+      ABI.COLLECTION
+    );
 
-      if (!nftContract) return;
-      const approval = await nftContract.isApprovedForAll(address, ADDRESS.STAKING);
-      if (!approval) {
-        const approve = await nftContract.setApprovalForAll(ADDRESS.STAKING, true);
-        await approve.wait();
-      }
-
-      const { Contract } = connectContract(
-        ADDRESS.STAKING,
-        ABI.STAKING
-      );
-  
-      if (!Contract) return;
-      const trx = Contract.stakeNFT(
-        '0',
-        amount
-      );
-      toast.promise(trx, {
-        loading: 'Loading',
-        success: 'Transaction completed',
-        error: 'Something went wrong!',
-      });
-      modalConfirm.toggleOff();
-    } catch (error) {
-      modalConfirm.toggleOff();
-      console.log(error);
+    if (!nftContract) return;
+    const approval = await nftContract.isApprovedForAll(address, ADDRESS.STAKING);
+    if (!approval) {
+      const approve = await nftContract.setApprovalForAll(ADDRESS.STAKING, true);
+      await approve.wait();
     }
+
+    const { Contract } = connectContract(
+      ADDRESS.STAKING,
+      ABI.STAKING
+    );
+
+    if (!Contract) return;
+    return Contract.stakeNFT('0', amount);
   };
 
-  const handleUnstake = async () => {
-    try {
-      const { Contract } = connectContract(
-        ADDRESS.STAKING,
-        ABI.STAKING
-      );
-  
-      if (!Contract) return;
-      const trx = Contract.unstakeNFT('0', amount);
-      toast.promise(trx, {
-        loading: 'Loading',
-        success: 'Transaction completed',
-        error: 'Something went wrong!',
-      });
-      modalConfirm.toggleOff();
-    } catch (error) {
-      modalConfirm.toggleOff();
-      console.log(error);
-    }
+  const handleUnstake = () => {
+    const { Contract } = connectContract(
+      ADDRESS.STAKING,
+      ABI.STAKING
+    );
+
+    if (!Contract) return;
+    return Contract.unstakeNFT('0', amount);
   };
+
+  const { execute, status } = useAsync(
+    operation === 'Stake' ? handleStake : handleUnstake,
+    async (trx) => {
+      notifications.show({
+        id: 'load-data',
+        loading: true,
+        title: 'Transaction in progress',
+        message: 'Transaction will be completed in seconds.',
+        autoClose: false,
+        withCloseButton: false,
+        radius: 'md',
+      });
+      await trx.wait();
+      modalConfirm.toggleOff();
+      notifications.update({
+        id: 'load-data',
+        title: 'Transaction completed',
+        message: 'Successfully purchase',
+        radius: 'md'
+      });
+    },
+    (err) => {
+      modalConfirm.toggleOff();
+      notifications.show({
+        title: 'Transaction failed',
+        message: err?.reason,
+        color: 'red',
+        radius: 'md'
+      });
+    },
+    false
+  );
 
   return (
     <>
@@ -100,12 +115,13 @@ const Stake = ({ modal, operation }: IStake) => {
         <Button fullWidth size="md" color="dark" radius={8} mt={16} onClick={openConfirmModal}>
           {operation === 'Stake' ? 'Stake' : 'Unstake'}
         </Button>
-      </Modal>
+      </Modal>  
     
       <ModalConfirmation
-        callbackFn={operation === 'Stake' ? handleStake : handleUnstake}
+        callbackFn={execute}
         modal={modalConfirm.isOn}
         setModal={modalConfirm.toggle}
+        status={status}
       />
     </>
   );

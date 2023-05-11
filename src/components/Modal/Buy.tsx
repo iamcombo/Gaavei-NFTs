@@ -15,8 +15,9 @@ import { connectContract } from '@/utils';
 import { useAccount } from 'wagmi';
 import { useRouter } from 'next/router';
 import { ethers } from 'ethers';
-import { toast } from 'react-hot-toast';
 import { ADDRESS, ABI } from '@/constants/CONTRACT';
+import useAsync from '@/hooks/useAsync';
+import { notifications } from '@mantine/notifications';
 import type { IModal } from './type';
 import Confirmation from './Confirmation';
 
@@ -33,30 +34,50 @@ const Buy = ({ modal, setModal }: IModal) => {
     setModalConfirm(true);
   };
 
-  const handleBuy = async () => {
-    try {
-      const { Contract } = connectContract(
-        ADDRESS.COLLECTION,
-        ABI.COLLECTION
-      );
-  
-      if (!Contract) return;
-      const trx = Contract.claim(
-        address,
-        query?.id,
-        1,
-        { value: ethers.utils.parseEther('0') }
-      );
-      toast.promise(trx, {
-        loading: 'Loading',
-        success: 'Transaction completed',
-        error: 'Something went wrong!',
-      });
-      setModalConfirm(false);
-    } catch (err: any) {
-      setModalConfirm(false);
-    }
+  const buy = () => {
+    const { Contract } = connectContract(
+      ADDRESS.COLLECTION,
+      ABI.COLLECTION
+    );
+
+    if (!Contract) return;
+    return Contract.claim(address, query?.id, 1, { 
+      value: ethers.utils.parseEther('0'),
+    });
   };
+
+  const { execute: handleBuy, status } = useAsync(
+    buy,
+    async (trx) => {
+      notifications.show({
+        id: 'load-data',
+        loading: true,
+        title: 'Transaction in progress',
+        message: 'Transaction will be completed in seconds.',
+        autoClose: false,
+        withCloseButton: false,
+        radius: 'md',
+      });
+      await trx.wait();
+      setModalConfirm(false);
+      notifications.update({
+        id: 'load-data',
+        title: 'Transaction completed',
+        message: 'Successfully purchase',
+        radius: 'md'
+      });
+    },
+    (err) => {
+      setModalConfirm(false);
+      notifications.show({
+        title: 'Transaction failed',
+        message: err?.reason,
+        color: 'red',
+        radius: 'md'
+      });
+    },
+    false
+  );
 
   return (
     <>
@@ -103,6 +124,7 @@ const Buy = ({ modal, setModal }: IModal) => {
               step={2}
               styles={{ input: { width: rem(54), textAlign: 'center' } }}
               variant="unstyled"
+              disabled
             />
 
             <ActionIcon
@@ -125,10 +147,11 @@ const Buy = ({ modal, setModal }: IModal) => {
         </Button>
       </Modal>
 
-      <Confirmation 
+      <Confirmation
         modal={modalConfirm}
         setModal={setModalConfirm}
         callbackFn={handleBuy}
+        status={status}
       />
     </>
   );
