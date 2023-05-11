@@ -45,7 +45,7 @@ function TrendingCard({
           <Group position='right'>
             {isEnd && (
               <Badge color="red" variant="light">
-                End
+                Coming soon
               </Badge>
             )}
             {!isEnd && (
@@ -75,7 +75,7 @@ function TrendingCard({
               color="slate.8"
               radius="md"
             >
-              {isEnd ? "END" : "BUY"} 
+              {isEnd ? "Coming soon..." : "BUY"} 
             </Button>
           </Link>
         </Col>

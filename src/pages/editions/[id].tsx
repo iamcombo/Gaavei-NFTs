@@ -19,7 +19,7 @@ import {
 import { ModalBuy } from '@/components/Modal';
 import { AudioPlayer, ScrollToTop } from '@/components';
 import { connectContract } from '@/utils';
-import ABI from '@/constants/ABI.json';
+import { ABI, ADDRESS } from '@/constants/CONTRACT';
 
 function Editions() {
   const { query } = useRouter();
@@ -29,17 +29,21 @@ function Editions() {
   const [metadata, setMetadata] = useState<any | null>(null);
 
   const getMetadata = async () => {
-    const { Contract } = connectContract(
-      '0x0Bf7e70B88ABd4D3C557AD091383415B867E9777',
-      ABI
-    );
-
-    if (!Contract || !query?.id) return;
-    const metadataUri = await Contract.uri(query.id);
-
-    const res = await fetch(metadataUri);
-    const data = await res.json();
-    setMetadata(data);
+    try {
+      const { Contract } = connectContract(
+        ADDRESS.COLLECTION,
+        ABI.COLLECTION
+      );
+  
+      if (!Contract || !query?.id) return;
+      const metadataUri = await Contract.uri(query.id);
+  
+      const res = await fetch(metadataUri);
+      const data = await res.json();
+      setMetadata(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

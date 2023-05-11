@@ -3,6 +3,7 @@ import { ethers } from 'ethers';
 function connectContract(contractAddress: string, contractABI: object[]) {
   let Contract;
   let Provider;
+
   try {
     const { ethereum } = window;
     //= checking for eth object in the window
@@ -17,6 +18,7 @@ function connectContract(contractAddress: string, contractABI: object[]) {
   } catch (error) {
     console.log('ERROR:', error);
   }
+  
   return { Contract, Provider };
 }
 

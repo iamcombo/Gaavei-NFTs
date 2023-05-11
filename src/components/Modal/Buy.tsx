@@ -12,11 +12,11 @@ import {
 import { useRef, useState } from 'react';
 import { IconMinus, IconPlus } from '@tabler/icons-react';
 import { connectContract } from '@/utils';
-import ABI from '@/constants/ABI.json';
 import { useAccount } from 'wagmi';
 import { useRouter } from 'next/router';
 import { ethers } from 'ethers';
 import { toast } from 'react-hot-toast';
+import { ADDRESS, ABI } from '@/constants/CONTRACT';
 import type { IModal } from './type';
 import Confirmation from './Confirmation';
 
@@ -35,7 +35,10 @@ const Buy = ({ modal, setModal }: IModal) => {
 
   const handleBuy = async () => {
     try {
-      const { Contract } = connectContract('0x0Bf7e70B88ABd4D3C557AD091383415B867E9777', ABI);
+      const { Contract } = connectContract(
+        ADDRESS.COLLECTION,
+        ABI.COLLECTION
+      );
   
       if (!Contract) return;
       const trx = Contract.claim(
@@ -49,11 +52,9 @@ const Buy = ({ modal, setModal }: IModal) => {
         success: 'Transaction completed',
         error: 'Something went wrong!',
       });
-      setModal(false);
+      setModalConfirm(false);
     } catch (err: any) {
-      console.log(err);
-      setModal(false);
-      // toast.error(err.error);
+      setModalConfirm(false);
     }
   };
 

@@ -85,9 +85,11 @@ function DropdownMenu() {
             Profile
           </Menu.Item>
         </Link>
-        <Menu.Item icon={<IconReceiptTax stroke={1.5} size={14} />}>
-          Earning
-        </Menu.Item>
+        <Link href="/earning">
+          <Menu.Item icon={<IconReceiptTax stroke={1.5} size={14} />}>
+            Earning
+          </Menu.Item>
+        </Link>
         {/* <Menu.Item icon={<IconSettings stroke={1.5} size={14} />}>Setting</Menu.Item> */}
         {/* <Menu.Item icon={<IconBuildingStore stroke={1.5} size={14} />}>Market</Menu.Item> */}
         <Menu.Item
