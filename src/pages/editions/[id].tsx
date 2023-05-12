@@ -21,8 +21,11 @@ import { AudioPlayer, ScrollToTop } from '@/components';
 import { connectContract } from '@/utils';
 import { ABI, ADDRESS } from '@/constants/CONTRACT';
 import { useAccount, useContractRead } from 'wagmi';
+import { useAuth } from '@/contexts';
+import Link from 'next/link';
 
 function Editions() {
+  const { user } = useAuth();
   const { address } = useAccount();
   const { query } = useRouter();
   const { data: claimRestrictions }: any = useContractRead({
@@ -56,7 +59,7 @@ function Editions() {
       const data = await res.json();
       setMetadata(data);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -88,24 +91,39 @@ function Editions() {
               / {claimRestrictions?. maxSupply.toString()}
             </Title>
           </div>
-          <div>
-            <Button
-              size="lg"
-              radius={8}
-              px={64}
-              color="dark"
-              variant="outline"
-              onClick={() => setModalBuy(true)}
-              mb={8}
-            >
-              BUY
-            </Button>
-            <Text fw={500}>Total claim</Text>
-            <Title order={3}>
-              {getSupplyClaimedByWallet?.toString()}
-              / {claimRestrictions?. quantityLimit.toString()}
-            </Title>
-          </div>
+          {(address && user) && (
+            <div>
+              <Button
+                size="lg"
+                radius={8}
+                px={64}
+                color="dark"
+                variant="outline"
+                onClick={() => setModalBuy(true)}
+                mb={8}
+              >
+                BUY
+              </Button>
+              <Text fw={500}>Total claim</Text>
+              <Title order={3}>
+                {getSupplyClaimedByWallet?.toString()}
+                / {claimRestrictions?. quantityLimit.toString()}
+              </Title>
+            </div>
+          )}
+          {(!address || !user) && (
+            <Link href='/signIn'>
+              <Button
+                size="lg"
+                radius={8}
+                px={64}
+                color="dark"
+                mb={8}
+              >
+                SignIn
+              </Button>
+            </Link>
+          )}
         </Group>
 
         <Divider my={24} />

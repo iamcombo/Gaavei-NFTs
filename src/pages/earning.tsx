@@ -1,4 +1,5 @@
 import { 
+  Alert,
   Button, 
   Card, 
   Container,
@@ -14,6 +15,7 @@ import { ModalStake } from "@/components/Modal";
 import { ABI, ADDRESS } from "@/constants/CONTRACT";
 import { useToggle } from "@/hooks/useToggle";
 import { useAuth } from "@/contexts";
+import { IconAlertCircle } from "@tabler/icons-react";
 
 const Earning = () => {
   const { user } = useAuth();
@@ -78,6 +80,11 @@ const Earning = () => {
           Unstake
         </Button>
       </Group>
+      {!address && (
+        <Alert mt={24} icon={<IconAlertCircle size="1rem" />} title="Alert!" color="red" radius={8}>
+          You are not connect to your wallet yet.
+        </Alert>
+      )}
 
       <ModalStake modal={modal} operation='Stake' />
       <ModalStake modal={modalUnstake} operation='Unstake' />
