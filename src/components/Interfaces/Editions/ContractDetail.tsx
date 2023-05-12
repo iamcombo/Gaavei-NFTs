@@ -1,4 +1,4 @@
-import { Accordion, Text, Title } from "@mantine/core";
+import { Accordion, Anchor, Text, Title } from "@mantine/core";
 import type { IContractDetail } from "./type";
 
 const ContractDetail = ({
@@ -22,7 +22,11 @@ const ContractDetail = ({
 
         <Accordion.Item value="flexibility">
           <Accordion.Control>SONG CONTRACT ADDRESS</Accordion.Control>
-          <Accordion.Panel>{contractAddress}</Accordion.Panel>
+          <Accordion.Panel>
+            <Anchor  href={`https://testnet.bscscan.com/address/${contractAddress}`} target="_blank">
+              {contractAddress}
+            </Anchor>
+          </Accordion.Panel>
         </Accordion.Item>
 
         <Accordion.Item value="focus-ring">

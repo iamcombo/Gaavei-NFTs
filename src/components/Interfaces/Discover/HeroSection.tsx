@@ -1,4 +1,5 @@
 import album from '@/assets/this-is-our-time-cover.jpg';
+import snopp from '@/assets/snopp.jpg';
 import { Carousel } from '@mantine/carousel';
 import {
   Badge,
@@ -16,6 +17,7 @@ import {
 import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
 import { useRef } from 'react';
+import Link from 'next/link';
 
 function HeroSection() {
   const autoplay = useRef(Autoplay({ delay: 2000 }));
@@ -71,9 +73,11 @@ function HeroSection() {
                     <Text weight={500} color="slate.2">
                       Trading is LIVE
                     </Text>
-                    <Button compact variant="outline" color="slate.1">
-                      BUY NOW
-                    </Button>
+                    <Link href='/editions/0'>
+                      <Button compact variant="outline" color="slate.1">
+                        BUY NOW
+                      </Button>
+                    </Link>
                   </Group>
                 </Stack>
               </Col>
@@ -83,7 +87,7 @@ function HeroSection() {
       </Carousel.Slide>
       <Carousel.Slide>
         <Card h={240} radius={0} sx={{ position: 'relative' }}>
-          <Image src={album} alt="" fill style={{ objectFit: 'cover' }} />
+          <Image src={snopp} alt="" fill style={{ objectFit: 'cover' }} />
           <Overlay
             gradient="linear-gradient(-145deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 100%)"
             opacity={0.85}
@@ -107,15 +111,15 @@ function HeroSection() {
                 <Stack spacing="xl">
                   <div>
                     <Badge color="slate.5">Single</Badge>
-                    <Text weight={600}>MPJ, DAVID</Text>
-                    <Title weight={800}>THIS IS OUR TIME</Title>
+                    <Text weight={600}>Snoop Dogg x GaryVee</Text>
+                    <Title weight={800}>Please Take a Step Back</Title>
                   </div>
                   <Group spacing={40}>
-                    <Text weight={500} color="slate.2">
+                    {/* <Text weight={500} color="slate.2">
                       Trading is LIVE
-                    </Text>
+                    </Text> */}
                     <Button compact variant="outline" color="slate.1">
-                      BUY NOW
+                      Coming soon...
                     </Button>
                   </Group>
                 </Stack>

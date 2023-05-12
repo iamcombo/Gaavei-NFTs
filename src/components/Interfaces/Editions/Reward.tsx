@@ -41,7 +41,7 @@ const Reward = () => {
             </ThemeIcon>
             <Text weight={600}>Royalty</Text>
             <Text>
-              By owning the assets, you will earn some rewards in many ways.
+              Earn royalties when the music streams on Spotify, Apple Music, & more.
             </Text>
           </Card>
         </Col>
