@@ -26,8 +26,9 @@ import Link from 'next/link';
 
 function Editions() {
   const { user } = useAuth();
-  const { address } = useAccount();
   const { query } = useRouter();
+  const { address } = useAccount();
+  
   const { data: claimRestrictions }: any = useContractRead({
     address: ADDRESS.COLLECTION as `0x${string}`,
     abi: ABI.COLLECTION,
@@ -142,6 +143,6 @@ function Editions() {
       </Container>
     </>
   );
-}
+};
 
 export default Editions;

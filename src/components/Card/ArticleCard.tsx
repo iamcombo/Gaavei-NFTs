@@ -17,7 +17,7 @@ function ArticleCard({
     <Anchor href={link} target='_blank'>
       <Card withBorder radius={8} sx={{ height: '100%' }}>
         <Card.Section pb={8}>
-          <AspectRatio ratio={16 / 10}>
+          <AspectRatio ratio={1080 / 720}>
             <Image
               alt=""
               src={image}
