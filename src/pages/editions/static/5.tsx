@@ -35,7 +35,13 @@ const Static5 = () => {
         </Group>
 
         <Divider my={24} />
-        <Description description="" />
+        <Description description="Producer: G-DEVITH
+Composer: Soun Piseth
+Mix & Master: G-Devith
+Artwork by: RockStarMade
+Visual by: RockStarMeow
+Chorus: @tepboprek 
+" />
 
         <Space h={40} />
         <Reward />

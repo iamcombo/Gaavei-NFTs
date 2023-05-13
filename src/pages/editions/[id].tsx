@@ -134,8 +134,8 @@ function Editions() {
         <Space h={40} />
         <ContractDetail
           blockchain="Binance Smart Chain"
-          contractAddress=""
-          releaseDate=""
+          contractAddress="0xfEdF9a9d7C6ea887a10e045C102b2faDa47B8DcE"
+          releaseDate="MAY-10-2023 10:10:09 AM +UTC"
           royalty="5%"
           tokenStandard="ERC-1155"
         />

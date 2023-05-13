@@ -35,7 +35,24 @@ const Static4 = () => {
         </Group>
 
         <Divider my={24} />
-        <Description description="" />
+        <Description description="Written: Songha Group 
+Producer: Songha & Ran  
+Co-Producer: Kyle & Kerwin 
+Khmer Instrument: ឌៀប សិទិ្ធសុធា
+Mixing & Mastering: ណុំ ចាន់រតនៈ
+ដឹកនាំសម្តែង៖ Jonathan 
+រៀបចំការផលិត៖ រាជ ម៉ានុត
+AD & Line Producer: ឈន ពិសិដ្ឋ
+ដឹកនាំថត៖ សុខ ដាន់
+Focus Puller: ង៉ូវ បូរិទ្ធ
+ជំនួយការថត៖ ប៊ុន ចាន់ណារ៉ា
+កាត់ត៖ យន់ យ៉ូណាថាន
+កែពណ៌៖ M-FREE
+ប្រធានបច្ចេកទេសភ្លើង៖ ថា ឃា
+ជំនួយការផ្នែកភ្លើង៖ យិន ណែម-ឃួន សុខលាង-សុវណ្ណ ឧត្ដម
+ដេគ័រ៖ ថៃ សេង & វ៉ា ឃីម
+Production & Location: សឹង សុជាតិ
+Make up: Team KINO" />
 
         <Space h={40} />
         <Reward />

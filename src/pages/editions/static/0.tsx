@@ -35,7 +35,9 @@ const Static0 = () => {
         </Group>
 
         <Divider my={24} />
-        <Description description="" />
+        <Description description="Please, take a step back and think about how awesome it actually is.
+And then, recognize that you can attack the world in a totally different way. 
+Because you were lucky enough to be born during… this… era… " />
 
         <Space h={40} />
         <Reward />
