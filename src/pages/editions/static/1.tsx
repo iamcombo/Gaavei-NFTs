@@ -35,7 +35,17 @@ const Static1 = () => {
         </Group>
 
         <Divider my={24} />
-        <Description description="" />
+        <Description description="
+Prod. by NINO
+Executive Producer : Ben Bizzy
+Artist : OG BOBBY, VannDa, ESKIIMO
+Lyrics : OG BOBBY, VannDa, ESKIIMO
+Mix : NINO
+Master : Alex Psadourakis
+Studio : NINO TRAP HOUSE STUDIO
+
+OG BOBBY - BONG Feat. VannDa Lyrics
+"/>
 
         <Space h={40} />
         <Reward />

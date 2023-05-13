@@ -35,7 +35,29 @@ const Static3 = () => {
         </Group>
 
         <Divider my={24} />
-        <Description description="" />
+        <Description description="Producer: Vanthan & VannDa
+Arrangement: Vanthan & VannDa
+Written: Vanthan & VannDa
+Mixed and Mastered: Vanthan
+Artwork: Yuu 
+
+Director: Youngz 
+AD: Juvie Lin & Thida Hatake 
+DOP: Chhai Tola, nick. & Aiden 
+Camera Operator: Ted 
+AC: Sopheak & Xing.VX
+Editor: Chhai Tola  
+Effect: Yuu 
+Colorist: nick. 
+Lighting: Pijeyfilm 
+
+Production Manager: Raksa 
+Assistant Production: Ya Rona & Teng Manith
+Makeup artist: Thida Hatake
+
+Extras: Varan | Lyma | Sophia | Raphy | Thida | Mardy | Vatanak | Sovanndary | Thatthai | Rithy | Rina | Ny ny | Elyka Vutha | Leang small
+
+Thanks to Plerng Kob for the location" />
 
         <Space h={40} />
         <Reward />

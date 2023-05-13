@@ -35,7 +35,12 @@ const Static2 = () => {
         </Group>
 
         <Divider my={24} />
-        <Description description="" />
+        <Description description="When I walked up in the spot, and I seen her in the cut
+When she walked by we locked eyes, and she said Papi what’s up?
+I said Mami where you going, she said wherever you want
+So I told her straight up 
+Ese c*lo me pone mal, en el VIP
+Ese c*lo me pone mal, en el VIP" />
 
         <Space h={40} />
         <Reward />
